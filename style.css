@@ -1,0 +1,49 @@
+body
+{
+    background-color: silver;
+}
+
+.rfl
+{
+    float: right;
+    text-align: right;
+}
+
+.lfl
+{
+    float: left;
+}
+
+#menu
+{
+    text-align: left;
+    border: 1px solid black;
+}
+
+.invlnk
+{
+    text-decoration: none;
+    color: inherit;
+}
+
+.clear
+{
+    clear: both;
+}
+
+.footnotelink
+{
+    vertical-align: super;
+    font-size: 11px;
+}
+
+.footnotetext
+{
+    font-size: 12px;
+}
+
+.fitimg{
+    max-width: 100%;
+    max-height: 100vh;
+    height: auto;
+}
