@@ -1,0 +1,24 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[german]{babel}
+
+\usepackage{import}
+
+\import{../Template/}{commands.tex}
+
+%Set the sheet number and the return date
+\setcounter{shnumber}{1}
+\setabgabe{Donnerstag, den 18.10, 10:00 Uhr}
+\begin{document}
+
+%header
+\import{../Template/}{header.tex}
+
+%exercise
+\import{../Template/}{AufgabeBeispiel.tex}
+
+%footer
+\import{../Template/}{footer.tex}
+
+\end{document}
