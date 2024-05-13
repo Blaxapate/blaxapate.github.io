@@ -1,0 +1,80 @@
+\documentclass[a4paper,12pt]{exam}
+%Documentation de la classe exam : https://mirrors.ircam.fr/pub/CTAN/macros/latex/contrib/exam/examdoc.pdf
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel} 
+\usepackage{amsmath,amssymb}
+\usepackage{titlesec}
+\usepackage{tikz}
+\usepackage{lastpage}
+\usepackage{pgfplots}
+\usepackage{enumerate}
+\usepackage[inline]{enumitem}
+
+\DeclareMathOperator{\cm}{cm}
+
+%En-tête et pied de page
+\pagestyle{headandfoot}
+\header{}{\Large\textbf{Travaux Dirigés -- correction}\\Continuité et dérivabilité}{\today}
+\headrule
+\footer{}{}{}
+
+\titleformat{\section}[frame]{\Huge\bfseries\filright}{}{2mm}{\centering  }
+
+\printanswers					%Commenter cette ligne pour cacher les solutions.
+
+\qformat{\textbf{Exercice \thequestion~:}\hfill}
+\newcommand{\changesolution}[1]{\renewcommand{\solutiontitle}{\noindent\textbf{#1~:}}
+}
+\changesolution{Corrigé}
+
+\extrawidth{1cm}
+
+\begin{document}
+\begin{questions}
+
+\question\ 
+ Pour $n\in\mathbb N$, on considère la fonction $f_n$ définie sur $\mathbb R$ par :
+ 
+ $$f_n(x)=\left\{\begin{array}{lc}x^n \sin(\tfrac{1}{x})&\text{si }x\neq 0\\0&\text{si }x=0\end{array}\right.$$
+ 
+ \begin{enumerate}
+  \item Montrez que $f_0$ est continue sur $\mathbb R^*$ mais discontinue en $0$.
+  \item Montrez que $f_1$ est continue sur $\mathbb R$, dérivable sur $\mathbb R^*$, mais n'est pas dérivable en $0$.
+  \item Montrez que $f_2$ est continue sur $\mathbb R$, dérivable sur $\mathbb R$, mais que sa dérivée n'est pas continue en $0$.
+  \item Montrez que $f_3$ est continue sur $\mathbb R$, dérivable sur $\mathbb R$, et que sa dérivée est continue sur $\mathbb R$.
+ \end{enumerate}
+ 
+ \begin{solution}\ 
+ Fixons $n$. On considère les fonctions $u: x\rightarrow x^n$, $v: x\rightarrow \tfrac1x$ et $w: x\rightarrow\sin(x)$. $v$ est continue sur $\mathbb R^*$ et $w$ est continue sur $\mathbb R$, donc leur composée $w\circ v$ est continue sur $\mathbb R^*$. $u$ est continue sur $\mathbb R$, donc le produit $u\times(w\circ v)$ est continu sur $\mathbb R^*$.
+ 
+ Ainsi, $f_n$ est continue sur $\mathbb R^*$ quelque soit $n$. Le même argument montre que $f_n$ est dérivable sur $\mathbb R^*$.
+ 
+ \begin{enumerate}
+  \item Le fonction $f_0$ est continue sur $\mathbb R^*$ par l'argument ci-dessus. On considère désormais la suite $(u_n)_{n\in\mathbb N}$ définie par $u_n=(\tfrac{\pi}{2}+2n\pi)^{-1}$. On a $f_0(u_n)=\sin(\tfrac{\pi}{2}+2n\pi)=1$. Ainsi la suite $(u_n)_{n\in\mathbb N}$ tend vers $0$ et la suite $(f_0(u_n))_{n\in\mathbb N}$ tend vers $1$; or $f_0(0)=0\neq1$, donc $f_0$ n'est pas continue en $0$.
+  \item La fonction $f_1$ est continue et dérivable sur $\mathbb R^*$ d'après l'argument ci-dessus. Soit $(u_n)_{n\in\mathbb N}$ une suite qui converge vers $0$, on souhaite montrer que $(f_1(u_n))_{n\in\mathbb N}$ converge vers $f_1(0)=0$. Si $u_n=0$, alors $f_1(u_n)=0$, et en particulier $-|u_n|\leqslant f_1(u_n)\leqslant|u_n|$. Si $u_n\neq0$, $f_1(u_n)=u_n\sin(\tfrac{1}{u_n})$, et comme $\sin(x)\in[-1,1]$ pour tout $x$, on a $-|u_n|\leqslant f_1(u_n)\leqslant|u_n|$. D'après le théorème des gendarmes, $(f_1(u_n))_{n\in\mathbb N}$ tend vers $0$, et donc $f_1$ est continue en $0$.  
+  
+  On considère désormais le taux de variation de $f_1$ en $0$:
+  $$\frac{f_1(0+h)-f_1(0)}{h}=\frac{h\sin(\tfrac{1}{h})}{h}=\sin(\tfrac1h).$$
+  Ce taux de variation n'a pas de limite quand $h$ tend vers 0, donc la fonction $f_1$ n'est pas dérivable en $0$. 
+  \item On a pour tout $x\in\mathbb R$: $f_2(x)=xf_1(x)$. Comme $f_1$ est continue sur $\mathbb R$, $f_2$ est continue sur $\mathbb R$. De même $f_2$ est dérivable sur $\mathbb R^*$. On considère le taux de variation de $f_2$ en $0$:
+  $$\frac{f_2(0+h)-f_2(0)}{h}=\frac{h^2\sin(\tfrac{1}{h})}{h}=h\sin(\tfrac1h).$$
+  Ce taux de variation tend vers $0$ quand $h$ tend vers 0, donc $f_2$ est dérivable en $0$ et on a :
+  $$f_2'(x)=\left\{\begin{array}{lc}2x \sin(\tfrac{1}{x})-\cos(\tfrac1x)&\text{si }x\neq 0\\0&\text{si }x=0\end{array}\right.$$
+  Un argument similaire à la question 1 montre que $f_2'$ n'est pas continue en 0.
+  \item On a pour tout $x\in\mathbb R$: $f_3(x)=xf_2(x)$. Comme $f_2$ est continue et dérivable sur $\mathbb R$, $f_3$ est continue et dérivable sur $\mathbb R$, et on a
+  $$f_3'(x)=\left\{\begin{array}{lc}3x^2 \sin(\tfrac{1}{x})-x\cos(\tfrac1x)&\text{si }x\neq 0\\0&\text{si }x=0\end{array}\right.$$
+  Un argument similaire à la question 2 montre que la fonction $x\rightarrow x\cos(\tfrac1x)$ est continue en $0$ et donc que $f_3'$ est continue en 0. 
+ \end{enumerate}
+ \end{solution}
+ \question Démontrez qu'il existe deux points antipodaux (diamétralement opposées) de l'équateur où il fait la même température. Explicitez vos hypothèses.
+ 
+ \begin{solution}\ 
+  On considère la fonction $T$ définie sur $\mathbb R$ qui associe à $x$ la température à l'équateur la longitude $x$ (mesurée en degrée, modulo 360). On suppose que la fonction $T$ est continue car elle représente une grandeur physique.
+  
+  On considère la fonction $f$ définie par $f(x)=T(x)-T(x+180)$, la différence de température entre le point de longitude $x$ et son point antipodal. On veut montrer que $f$ s'annule en un point. Si $f(0)=0$, c'est fait. Sinon, comme $f(0)=-f(180)$, si l'un des deux est strictement positif, l'autre est srtictement négatif. Comme $f$ est continue, il existe $x\in[0,180]$ tel que $f(x)=0$.
+ \end{solution}
+
+ 
+\end{questions}
+\end{document}
