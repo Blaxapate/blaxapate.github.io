@@ -1,0 +1,134 @@
+\documentclass[a4paper,12pt]{exam}
+%Documentation de la classe exam : https://mirrors.ircam.fr/pub/CTAN/macros/latex/contrib/exam/examdoc.pdf
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel} 
+\usepackage{amsmath,amssymb}
+\usepackage{titlesec}
+\usepackage{tikz}
+\usepackage{lastpage}
+\usepackage{pgfplots}
+\usepackage{enumerate}
+\usepackage[inline]{enumitem}
+\usepackage{tkz-tab}
+
+\DeclareMathOperator{\cm}{cm}
+
+%En-tête et pied de page
+\pagestyle{headandfoot}
+\header{1\textsuperscript{ère} maths spé}{\Large\textbf{Travaux Dirigés}\\Fonction exponentielle}{%
+%\today
+LLG 2023-24
+}
+\headrule
+\footer{}{}{}
+
+\titleformat{\section}[frame]{\Huge\bfseries\filright}{}{2mm}{\centering  }
+
+\printanswers					%Commenter cette ligne pour cacher les solutions.
+
+\qformat{\textbf{Exercice \thequestion~:}\hfill}
+\newcommand{\changesolution}[1]{\renewcommand{\solutiontitle}{\noindent\textbf{#1~:}}
+}
+\changesolution{Corrigé}
+
+\extrawidth{1cm}
+
+\begin{document}
+\begin{questions}
+
+\question\ 
+Pour $n\in\mathbb N^*$, on définit la fonction $f_n(x)=x^n e^x$. La fonction $f_n$ est définie, continue, et dérivable sur $\mathbb R$.
+
+On souhaite démontrer que $f_n(x)$ converge vers 0 quand $x$ tend vers $-\infty$.
+
+\begin{enumerate}
+ \item En fonction de si $n$ est pair ou impair, étudiez les variations de la fonction $f_n$.
+ \item En déduire que $\forall n\in\mathbb N^*$, $f_n$ converge vers une valeur réelle quand $x$ tend vers $-\infty$.
+ \item En utilisant le fait que $f_{n+1}(x)=xf_n(x)$, conclure que $f_n(x)$ converge vers 0 en $-\infty$.
+\end{enumerate}
+
+\begin{solution}
+ \begin{enumerate}
+  \item On a $f_n'(x)=x^n e^x+nx^{n-1}e^x=x^{n-1}e^x(x+n)$. On étudie le signe de chacun des termes de ce produit:
+  \begin{itemize}
+   \item $e^x>0$ $\forall x\in\mathbb R$,
+   \item $(x-n)=0$ ssi $x=n$, $(x+n)>0$ ssi $x>-n$.
+   \item si $n$ est pair, $x^{n-1}\geqslant 0$ ssi $x\geqslant 0$; si $n$ est impair, $x^{n-1}\geqslant 0$ $\forall x\in\mathbb R$. Quelque soit $n$, $x^{n-1}=0$ ssi $x=0$.
+  \end{itemize}
+  
+  Enfin, il est clair que $f_n(0)=0$ pour tout $n$.
+  
+  On trace le tableau de signes et le tableau de variations, d'abord pour $n$ pair:
+  \begin{center}
+\begin{tikzpicture}
+   \tkzTabInit{$x$ / 1 , $e^x$ / 1 , $x+n$ / 1 , $x^{n-1}$ / 1 , $f_n'(x)$ / 1 , $f_n(x)$ / 1.5}{$-\infty$, $-n$, 0, $+\infty$}
+   \tkzTabLine{,+,,+,,+,}
+   \tkzTabLine{,-,z,+,,+,}
+   \tkzTabLine{,-,,-,z,+,}
+   \tkzTabLine{,+,z,-,z,+,}
+   \tkzTabVar{-/, +/ $f_n(-n)$, -/ $0$,+/}
+\end{tikzpicture}
+\end{center}
+puis pour $n$ impair :
+
+  \begin{center}
+\begin{tikzpicture}
+   \tkzTabInit{$x$ / 1 , $e^x$ / 1 , $x+n$ / 1 , $x^{n-1}$ / 1 , $f_n'(x)$ / 1 , $f_n(x)$ / 1.5}{$-\infty$, $-n$, 0, $+\infty$}
+   \tkzTabLine{,+,,+,,+,}
+   \tkzTabLine{,-,z,+,,+,}
+   \tkzTabLine{,+,,+,z,+,}
+   \tkzTabLine{,-,z,+,z,+,}
+   \tkzTabVar{+/, -/ $f_n(-n)$, R/ $0$,+/}
+   \tkzTabIma{2}{4}{3}{$0$}
+\end{tikzpicture}
+\end{center}
+\item Pour $n$ pair, sur l'intervalle $]-\infty,-n[$, $f_n(x)>0$ et $f_n$ est croissante ; ainsi, lorsque $x$ tend vers $-\infty$, $f_n(x)$ converge forcément vers une valeur réelle, nommons-la $l_n$.
+
+Pour $n$ impair, l'argument est similaire, mais $f_n$ est décroissante et négative sur l'intervalle $]-\infty,-n[$.
+\item Supposons que $l_n\neq 0$. Étudions alors la limite de $f_{n+1}(x)=xf_n(x)$ : informellement, $xf_n(x)\xrightarrow[x\rightarrow-\infty]{}(-\infty)l_n$, donc $f_{n+1}\xrightarrow[x\rightarrow-\infty]{}\pm\infty$, puisque $l_n\neq 0$. Mais on a montré que la limite de $f_{n+1}$ et $l_{n+1}\neq\pm\infty$! Ainsi, notre hypothèse est absurde; autrement dit, $l_n=0$.
+ \end{enumerate}
+\end{solution}
+
+Soit $n\in\mathbb N^*$, on étudie désormais la fonction $g_n(x)=\tfrac{e^x}{x^n}$. La fonction $g_n$ est définie, continue, et dérivable sur $\mathbb R^*$.
+
+On souhaite montrer que $g_n(x)$ tend vers $+\infty$ quand $x$ tend vers $+\infty$.
+
+\begin{enumerate}
+ \item Montrez que $\tfrac1{g_n(x)}=(-1)^n f_n(-x)$.
+ \item Quelle est la limite de $f_n(-x)$ quand $x$ tend vers $+\infty$?
+ \item En déduire la limite de $\tfrac1{g_n(x)}$ puis de $g_n(x)$ en $+\infty$.
+\end{enumerate}
+
+\begin{solution}
+ \begin{enumerate}
+  \item $(-1)^nf_n(-x)=(-1)^n(-x)^ne^{-x}=\tfrac{x^n}{e^x}=\tfrac1{g_n(x)}$.
+  \item La limite de $f_n(-x)$ lorsque $x$ tend vers $+\infty$ est égale à la limite de $f_n(x)$ lorsque $x$ tend vers $-\infty$, qui est, d'après l'exercice précédent, $0$.
+  \item $\tfrac{1}{g_n(x)}=(-1)^nf_n(-x)\xrightarrow[x\rightarrow+\infty]{}0$, or, $g_n(x)>0$ pour $x>0$; donc $g_n(x)\xrightarrow[x\rightarrow+\infty]{}+\infty$.
+ \end{enumerate}
+\end{solution}
+
+
+\question\ 
+On souhaite calculer des valeurs approximatives de l'exponentielle.
+On va utiliser l'approximation de $f$ par sa dérivée.
+ \begin{enumerate}
+ \item Soit $f$ une fonction dérivable en $a$. Expliquez pourquoi pour $h$ très petit, $f(a+h)\simeq f(a)+hf'(a)$.
+ \item En déduire que $e^h\simeq 1+h$ pour $h$ très petit.
+ \item Soit $a>0$, on pose $h=\tfrac{a}{n}$ pour un très grand $n$. En déduire $e^a\simeq(1+\tfrac{a}{n})^n$.
+ \item Quelles sont les trois premières décimales de $e$ ?
+\end{enumerate}
+
+\begin{solution}
+ \begin{enumerate}
+  \item Par définition de la dérivée, $f'(a)$ est la limite quand $h$ tend vers $0$ de $\tfrac{f(a+h)-f(a)}{h}$. Donc, lorsque $h$ est très petit, $f'(a)\simeq\tfrac{f(a+h)-f(a)}{h}$, d'où le résultat.
+  \item Il s'agit de l'inégalité précédente avec $f(x)=e^x$ et $a=0$ : $e^h=e^{0+h}\simeq e^0+he^{0}=1+h$.
+  \item On a $e^a=(e^h)^n\simeq(1+h)^n=(1+\tfrac{a}{n})^n$.
+  \item En prenant $a=1$ et $n=10000$, on calcule $e\simeq(1{,}0001)^10000\simeq2{,}718$.
+ \end{enumerate}
+\end{solution}
+
+
+
+\end{questions}
+\end{document}
