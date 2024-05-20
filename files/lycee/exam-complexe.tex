@@ -1,0 +1,189 @@
+\documentclass[a4paper,12pt]{exam}
+%Documentation de la classe exam : https://mirrors.ircam.fr/pub/CTAN/macros/latex/contrib/exam/examdoc.pdf
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel} 
+\usepackage{amsmath,amssymb}
+\usepackage{titlesec}
+\usepackage{tikz}
+\usepackage{lastpage}
+\usepackage{pgfplots}
+\usepackage{enumerate}
+\usepackage[inline]{enumitem}
+
+\DeclareMathOperator{\cm}{cm}
+
+%En-tête et pied de page
+\pagestyle{headandfoot}
+\header{T\textsuperscript{ale} maths expertes}{\Large\textbf{Évaluation} -- Nombres complexes}{
+%
+%\today
+LLG 2023-24}
+\headrule
+\footer{}{}{}
+
+\titleformat{\section}[frame]{\Huge\bfseries\filright}{}{2mm}{\centering  }
+
+\printanswers					%Commenter cette ligne pour cacher les solutions.
+
+
+\newcommand{\changesolution}[1]{\renewcommand{\solutiontitle}{\noindent\textbf{#1~:}}
+}
+\changesolution{Corrigé}
+
+\extrawidth{1cm}
+
+\begin{document}
+\begin{questions}
+\qformat{\textbf{Exercice \thequestion}\hfill\textbf{5pt}}
+\question\ 
+Soit $c$ un nombre complexe. On cherche à étudier les éventuelles racines carrées de $c$.
+\begin{enumerate}
+ \item Soit $z\in\mathbb C$ tel que $z^2=c$. On pose $m=|z|$ et $\theta=\arg(z)$.
+ \begin{enumerate}
+ \item Montrez que $m^2=|c|$ et $2\theta\equiv\arg(c)$ modulo $2\pi$.
+ \item En déduire que l'équation $z^2=c$ admet en général deux solutions complexes.
+ \end{enumerate}
+ \item Calculez les nombres complexes dont le carré est égal à $-1$, à $i$, et à $-2+2i\sqrt{3}$. Donnez leur valeur en forme algébrique et en forme exponentielle. 
+\end{enumerate}
+ \begin{solution}
+\begin{enumerate}
+ \item\ 
+\begin{enumerate}
+  \item $m^2=|z|^2=|z^2|=|c|^2$ et $2\theta=2\arg(z)\equiv \arg(z^2)\equiv\arg(c)$ mod $2\pi$.
+  \item Ainsi $m^2=|c|$, comme $m=|z|$ on a $m\geqslant0$, donc $m=\sqrt{|c|}$; et $2\theta\equiv\arg(c)$ mod $2\pi$, donc $\theta\equiv\tfrac{\arg(c)}2$ mod $\pi$, autrement dit $\theta=\tfrac{\arg(c)}2$ ou $\theta=\tfrac{\arg(c)}2+\pi$. Les deux solutions sont donc $\sqrt{|c|}e^{i\frac{\arg(c)}2}$ et $\sqrt{|c|}e^{i(\frac{\arg(c)}2+\pi)}=\sqrt{|c|}e^{i\frac{\arg(c)}2}e^{i\pi}=-\sqrt{|c|}e^{i\frac{\arg(c)}2}$, distincte sauf si $c=0$.
+\end{enumerate}
+\item $-1=1e^{i\pi}$, donc $z^2=-1$ a pour solutions $e^{i\frac\pi2}=i$ et $e^{i\frac{3\pi}2}=-i$.
+
+$i=1e^{i\frac\pi2}$, donc $z^2=i$ a pour solutions $e^{i\frac\pi4}=\tfrac2{\sqrt{2}}+i\tfrac2{\sqrt{2}}$ et $e^{i\frac{3\pi}4}=-\tfrac2{\sqrt{2}}-i\tfrac2{\sqrt{2}}$.
+
+$-2+2i\sqrt{3}=4e^{i\frac{2\pi}3}$, donc $z^2=-2+2i\sqrt{3}$ a pour solutions $2e^{i\frac\pi3}=1+i\sqrt{3}$ et $2e^{i\frac{4\pi}3}=-1-i\sqrt{3}$.
+\end{enumerate}
+ \end{solution}
+\ \vfill
+\qformat{\textbf{Exercice \thequestion}\hfill\textbf{7pt}}
+\question\ 
+\begin{enumerate}
+ \item Justifiez que $P(z)=z^5-1$ se factorise par $(z-1)$ et calculez cette factorisation.
+ \item On pose $\omega=e^{i\frac{2\pi}5}$. Justifiez que $P(\omega)=0$ et montrez que $1+\omega+\omega^2+\omega^3+\omega^4=0$.
+ \item Montrez que $\omega^3=\overline{\omega}^2$ et que $\omega^4=\overline{\omega}$.
+ \item Soient $u=\omega+\overline\omega$ et $v=\omega^2+\overline\omega^2$. Montrez que $u+v=-1$ et $uv=-1$.
+ \item Montrez que $u=\tfrac{-1+\sqrt5}2$ et $v=\tfrac{-1-\sqrt5}2$ et en déduire la valeur de $\cos(\tfrac{2\pi}5)$.
+ \item Soit $\theta\in\mathbb R$. Exprimez $\cos(2\theta)$ en fonction de $\cos(\theta)$.
+ \item En déduire la valeur de $\cos(\tfrac\pi5)$.
+\end{enumerate}
+\begin{solution}
+ \begin{enumerate}
+ \item $P(1)=1^5-1=0$, donc $P$ se factorise par $(z-1)$, et le calcul donne $P(z)=(z-1)(z^4+z^3+z^2+z+1)$.
+ \item $\omega^5=e^{i\frac{2\pi}5\times5}=e^{i2\pi}=1$, ainsi $P(\omega)=0$ et comme $\omega\neq 1$, $1+\omega+\omega^2+\omega^3+\omega^4=0$.
+ \item $\omega^3=e^{i\frac{6\pi}5}$ et $\overline\omega^2=e^{-i\frac{4\pi}5}$, or $\tfrac{6\pi}5-2\pi=\tfrac{-4\pi}5$, donc $\omega^3=\overline\omega^2$.
+ 
+ $\omega^4=e^{i\frac{8\pi}5}=e^{i(\frac{8\pi}5-2\pi)}=e^{-i\frac{2\pi}5}=\overline\omega$.
+ \item $u+v=\omega+\overline\omega+\omega^2+\overline\omega^2=\omega+\omega^4+\omega^2+\omega^3=-1$ d'après la question 2.
+ 
+ $uv=(\omega+\overline\omega)(\omega^2+\overline\omega^2)=\omega^3+\omega^6+\omega^4+\omega^7=\omega^3+\omega+\omega^4+\omega^2=-1$, car $\omega^5=1$.
+ \item Comme $u+v=-1$ on a $v=-1-u$, on substitue dans $uv=-1$ pour obtenir $u(-1-u)=-1$, autrement dit $u^2+u-1=0$. C'est un polynôme du second degré, on calcule le discriminant, on obtient $u=\tfrac{-1\pm\sqrt5}2$. On sait que $u=\omega+\overline\omega$, donc $u=2\Re(\omega)=2\cos(\tfrac{2\pi}5)>0$ car $0<\tfrac{2\pi}5<\tfrac\pi2$. On en conclut que $u=\tfrac{-1+\sqrt5}2$ et que $\cos(\tfrac{2\pi}5)=\tfrac u2=\tfrac{-1+\sqrt5}4$. 
+ \item $\cos(2\theta)=\cos(\theta+\theta)=\cos^2(\theta)-\sin^2(\theta)=2\cos^2(\theta)-1$.
+ \item $\cos(\tfrac{2\pi}5)=2\cos^2(\tfrac\pi5)-1=\tfrac{-1+\sqrt5}4$, ainsi $\cos^2(\tfrac\pi5)=\tfrac{3+\sqrt5}8$. Comme $0<\tfrac\pi5<\tfrac\pi2$, on sait que $\cos(\tfrac\pi5)>0$, et donc $\cos(\tfrac\pi5)=\sqrt{\tfrac{3+\sqrt5}8}$.
+ 
+ \emph{Note: $(1+\sqrt5)^2=6+2\sqrt5$, donc $\sqrt{\tfrac{3+\sqrt5}8}=\tfrac{1+\sqrt5}4$.}
+\end{enumerate}
+\end{solution}
+\qformat{\textbf{Exercice \thequestion}, \emph{extrait du sujet de bac 2015}.\hfill\textbf{8pt}}
+\ \vfill
+\question\ 
+\begin{enumerate}
+ \item Résoudre dans $\mathbb C$ l'équation suivante d'inconnue $z$:
+$$z^2-8z+64=0.$$
+
+ \item On considère les nombres complexes $a=4+4i\sqrt{3}$, $b=4-4i\sqrt{3}$ et $c= 8i$.
+ 
+ \begin{enumerate}
+ \item Calculer le module et un argument du nombre $a$.
+ \item Donner la forme exponentielle des nombres $a$ et $b$.
+ \item Placer dans un repère orthonormé $\left(O,\vec\imath,\vec\jmath\,\right)$ les points $A$, $B$ et $C$ d'affixes respectives $a$, $b$ et $c$, puis montrer que les points $A$, $B$ et $C$ sont sur un même cercle de centre $O$ dont on déterminera le rayon.
+ \end{enumerate}
+ 
+Pour la suite de l'exercice, on pourra s'aider de la figure de la question précédente complétée au fur
+et à mesure de l'avancement des questions.
+\item On considère les points $A'$, $B'$ et $C'$ d’affixes respectives $a'=ae^{i\frac\pi3}$, $b'=be^{i\frac\pi3}$ et $c'=ce^{i\frac\pi3}$.
+\begin{enumerate}
+ \item Montrer que $b'=8$.
+ \item Calculer le module et un argument du nombre $a'$.
+\end{enumerate}
+Pour la suite on admet que $a'=-4+4i\sqrt{3}$ et $c'=-4\sqrt{3}+4i$.
+\item Soient $M$ et $N$ deux points du plan d'affixes respectives $m$ et $n$. Quelle est l'interpretation géométrique du nombre complexe $\tfrac{m+n}2$ et de la quantité $|m-n|$?
+\begin{enumerate}
+ \item On note $r$, $s$ et $t$ les affixes des milieux respectifs $R$, $S$ et $T$ des segments $[A'B]$, $[B'C]$ et $[C'A]$. Calculez $r$, $s$ et $t$.
+\item Quelle est la nature du triangle $RST$ ?
+\end{enumerate}
+\end{enumerate}
+\begin{solution}
+ \begin{enumerate}
+ \item $\Delta=64-4\times64=-3\times64<0$, donc il y a deux solutions complexes: $\tfrac{8\pm i\sqrt{3\times64}}{2}=4\pm i4\sqrt3$.
+
+ \item\ 
+ \begin{enumerate}
+ \item $|a|=\sqrt{4^2+(4\sqrt3)^2}=8$, donc $a=8(\tfrac12+i\tfrac{\sqrt3}2)$; un argument de $a$ est un réel $\theta$ tel que $\cos(\theta)=\tfrac12$ et $\sin\theta=\tfrac{\sqrt3}2$, $\theta=\tfrac\pi3$ convient.
+ \item $a=8e^{i\frac\pi3}$ par la question précédente, et $a=\overline b$, donc $b=8e^{-i\frac\pi3}$.
+ \item\ \begin{center}
+         \begin{tikzpicture}[scale=0.5]
+    \begin{scope}[thick,font=\scriptsize]
+    % Axes:
+    % Are simply drawn using line with the `->` option to make them arrows:
+    % The main labels of the axes can be places using `node`s:
+    \draw [->] (-10,0) -- (10,0) node [above left]  {$\Re\{z\}$};
+    \draw [->] (0,-8.2) -- (0,10) node [below right] {$\Im\{z\}$};
+
+    % Axes labels:
+    % Are drawn using small lines and labeled with `node`s. The placement can be set using options
+    \iffalse% Single
+    % If you only want a single label per axis side:
+    \draw (1,-3pt) -- (1,3pt)   node [above] {$1$};
+    \draw (-1,-3pt) -- (-1,3pt) node [above] {$-1$};
+    \draw (-3pt,1) -- (3pt,1)   node [right] {$i$};
+    \draw (-3pt,-1) -- (3pt,-1) node [right] {$-i$};
+    \else% Multiple
+    % If you want labels at every unit step:
+    \foreach \n in {-8,...,-1,1,2,...,8}{%
+        \draw (\n,-3pt) -- (\n,3pt)   node [above] {$\n$};
+        \draw (-3pt,\n) -- (3pt,\n)   node [right] {$\n i$};
+    }
+    \fi
+    \end{scope}
+    % The circle is drawn with `(x,y) circle (radius)`
+    % You can draw the outer border and fill the inner area differently.
+    % Here I use gray, semitransparent filling to not cover the axes below the circle
+    \path [draw=black] (0,0) circle (8);
+    \draw (0,8) node[above left] {$C$};
+    \draw (3.9,6.8) -- (4.1,7) node[above right] {$A$};
+    \draw (3.9,-6.8) -- (4.1,-7) node[below right] {$B$};
+\end{tikzpicture}
+        \end{center}
+ \end{enumerate}
+\item\ 
+\begin{enumerate}
+ \item $b'=be^{i\frac\pi3}=8e^{-i\frac\pi3}e^{i\frac\pi3}=8e^{i0}=8$.
+ \item $|a'|=|a|=8$ et $\arg(a')=\arg(a)+\frac\pi3=\frac{2\pi}3$.
+\end{enumerate}
+\item Le nombre complexe $\tfrac{m+n}2$ est l'affixe du milieu du segment $[MN]$, et la quantité $|m-n|$ est la longueur $MN$.
+\begin{enumerate}
+ \item $r=\tfrac{a'+b}2=0$, $s=\tfrac{b'+c}2=4+4i$, $t=\tfrac{c'+a}2=(2-2\sqrt3)+i(2+2\sqrt3)$.
+\item Sur le dessin, $RST$ semble équilatéral; on calcule alors les longueurs RS, RT et ST: $RS=|s-r|=|s|=4\sqrt2$, $RT=|t|=4\sqrt2$, $TS=|t-s|=4\sqrt2$, on en conclut que $RST$ est équilatéral.
+\end{enumerate}
+\end{enumerate}
+\end{solution}
+
+\qformat{\textbf{Exercice \thequestion}, \emph{bonus}.\hfill\textbf{?pt}}
+\ \vfill
+\question\ 
+ Montrez que $\mathbb C$ est un $\mathbb R$-espace vectoriel de dimension 2.
+\begin{solution}
+ Les éléments de $\mathbb C$ s'écrivent $a+ib$ avec $a,b\in\mathbb R$. La loi d'addition sur $\mathbb C$ est définie par $(a+ib)+(c+id)=(a+c)+i(b+d)$. Comme l'addition dans $\mathbb R$ est associative est commutative, elle l'est aussi dans $\mathbb C$. $0+i0$ est l'élément neutre de cette loi et $-a+i(-b)$ est l'inverse de $a+ib$. Ainsi $(\mathbb C,+)$ est un groupe.
+ 
+ On définit le produit externe par un nombre réel: $\lambda\times(a+ib)=(\lambda a)+i(\lambda b)$. Il faut maintenant vérifier que ce produit se distribue sur l'addition, ce qui est immédiat puisque le produit est distributif dans $\mathbb R$.
+ 
+ On a prouvé que $\mathbb C$ est un $\mathbb R$-espace vectoriel. La famille $(1,i)$ est une famille libre et génératrice, autrement dit une base, dans $\mathbb C$, donc $\mathbb C$ est un $\mathbb R$-espace vectoriel de dimension 2.
+\end{solution}
+\end{questions}
+\end{document}
