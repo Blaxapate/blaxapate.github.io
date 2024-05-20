@@ -1,0 +1,163 @@
+\documentclass[a4paper,12pt]{exam}
+%Documentation de la classe exam : https://mirrors.ircam.fr/pub/CTAN/macros/latex/contrib/exam/examdoc.pdf
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel} 
+\usepackage{amsmath,amssymb}
+\usepackage{titlesec}
+\usepackage{tikz}
+\usepackage{lastpage}
+\usepackage{pgfplots}
+\usepackage{enumerate}
+\usepackage[inline]{enumitem}
+\usepackage{tkz-tab}
+
+\DeclareMathOperator{\cm}{cm}
+
+%En-tête et pied de page
+\pagestyle{headandfoot}
+\header{1\textsuperscript{ère} maths spé}{\Large\textbf{Évaluation} -- Fonction exponentielle}{%
+%\today
+LLG 2023-24
+}
+\headrule
+\footer{}{}{}
+
+\titleformat{\section}[frame]{\Huge\bfseries\filright}{}{2mm}{\centering  }
+
+\printanswers					%Commenter cette ligne pour cacher les solutions.
+
+
+\newcommand{\changesolution}[1]{\renewcommand{\solutiontitle}{\noindent\textbf{#1~:}}
+}
+\changesolution{Corrigé}
+
+%command \exercice to be called later
+\newcommand{\exercice}[2]{\qformat{\textbf{Exercice \thequestion}#1\hfill\textbf{#2}}\question\ }
+%command \exo for a blank exercise
+\newcommand{\exo}{\exercice{}{\ }}
+%command \exop{x} for an exercise worth x points
+\newcommand{\exop}[1]{\exercice{}{#1pt}}
+%command \exon{x} for an exercise named x
+\newcommand{\exon}[1]{\exercice{\emph{, #1.}}{\ }}
+%commmand \exonp{x,y} for an exercise named x and worth y points
+\newcommand{\exonp}[2]{\exercice{\emph{, #1.}}{#2pt}}
+
+\extrawidth{1cm}
+
+\begin{document}
+\begin{questions}
+\exop{7}
+On va démontrer le résultat suivant : si $x>0$, alors $e^x>1+x+\tfrac{x^2}2$.
+
+\begin{enumerate}
+ \item On considère la fonction $g$ définie sur $\mathbb R$ par $g(x)=e^x-(1+x)$.
+ \begin{enumerate}
+ \item Calculez $g'$ et étudiez son signe.
+ \item Faites un tableau de variations et justifiez que $g(x)$ atteint son minimum en $x=0$.
+ \item Étudiez le signe de $g(x)$ en fonction de $x$.
+ \end{enumerate}
+ \item On considère désormais la fonction $f(x)=e^x-(1+x+\tfrac{x^2}2)$.
+ \begin{enumerate}
+  \item Montrez que $f'(x)=g(x)$.
+  \item Faire un tableau de variations pour $f$.
+  \item Calculez $f(0)$ et en déduire le résultat énoncé au début de l'exercice.
+ \end{enumerate}
+ \item On considère la fonction $h$ définie sur $\mathbb R^*$ par $h(x)=\tfrac{e^x}x$.
+ 
+ Montrez que si $x>0$, alors $h(x)>\tfrac{x}{2}$; en déduire que $h(x)\xrightarrow[x\rightarrow+\infty]{}+\infty$.
+ \item On considère la fonction $i$ définie sur $\mathbb R$ par $i(x)=x-e^x$.
+ 
+ Montrez que si $x>0$, alors $i(x)<-1-\tfrac{x^2}2$; en déduire que $i(x)\xrightarrow[x\rightarrow+\infty]{}-\infty$.
+ \end{enumerate}
+ \begin{solution}
+  \begin{enumerate}
+ \item\ 
+ \begin{enumerate}
+ \item $g'(x)=e^x-1$, $g'(x)>0$ ssi $x>0$ et $g'(x)=0$ ssi $x=0$.
+ \item\
+ \begin{center}
+\begin{tikzpicture}
+   \tkzTabInit{$x$ / 1 , $g'(x)$/1, $g(x)$ / 1.5}{$-\infty$, $0$, $+\infty$}
+   \tkzTabLine{,-,z,+,}
+   \tkzTabVar{+/ , -/ $g(0)=0$, +/ }
+\end{tikzpicture}
+\end{center}
+$g$ est décroissante sur l'intervalle $]-\infty,0]$ et croissante sur l'intervalle $[0,+\infty[$; sur $]-\infty,+\infty[$, elle atteint donc un minimum en $0$ dont la valeur est $g(0)=0$.
+ \item $g(x)>0$ ssi $x\neq 0$ et $g(x)=0$ ssi $x=0$.
+ \end{enumerate}
+ \item\ 
+ \begin{enumerate}
+  \item $f'(x)=e^x-(0+1+\tfrac{2x}2)=g(x)$.
+  \item\ \begin{center}\begin{tikzpicture}\tkzTabInit{$x$ / 1 , $f'(x)=g(x)$/1, $f(x)$ / 1.5}{$-\infty$, $0$, $+\infty$}
+   \tkzTabLine{,+,z,+,}
+   \tkzTabVar{-/ , R/ $f(0)=0$, +/ }
+   \tkzTabIma{1}{3}{2}{$f(0)=0$}\end{tikzpicture}\end{center}.
+  \item $f(0)=e^0-1=0$. Puisque $f$ est strictement croissante sur l'intervalle $[0,+\infty[$, si $x>0$, alors $f(x))>f(0)$, autrement dit $e^x-(1+x+\tfrac{x^2}2)>0$, d'où $e^x>1+x+\tfrac{x^2}2$.
+ \end{enumerate}
+ \item Si $x>0$, alors $e^x>1+x\tfrac{x^2}{2}>\tfrac{x^2}2$ puisque $1+x>0$; ainsi $h(x)=\tfrac{e^x}x>\tfrac x2$. Comme $\tfrac x2\xrightarrow[x\rightarrow+\infty]{}+\infty$, on a $h(x)\xrightarrow[x\rightarrow+\infty]{}+\infty$.
+ \item Si $x>0$, alors $-e^x<-1-x-\tfrac{x^2}2$; donc $i(x)=e^x-x<-1-\tfrac{x^2}2$ et comme $-1-x\xrightarrow[x\rightarrow+\infty]{}-\infty$, on a $i(x)\xrightarrow[x\rightarrow+\infty]{}-\infty$.
+ \end{enumerate}
+ \end{solution}
+
+\ \vfill
+\exonp{tiré d'un sujet de bac 2022}{10}
+On considère les deux fonctions $f$ et $g$ définies sur l'intervalle $[0\;;+\infty[$ par $$f(x)=0{,}06(-x^2+13{,}7x)\text{ et }g(x)=(-0{,}15x+2{,}2)e^{0{,}2x}-2{,}2.$$
+On admet que les fonctions $f$ et $g$ sont dérivables et on note $f'$ et $g'$ leurs fonctions dérivées
+respectives.
+\begin{enumerate}
+ \item On donne le tableau de variations complet de la fonction $f$ sur l'intervalle $[0\;;+\infty[$.
+\begin{center}
+\begin{tikzpicture}
+   \tkzTabInit{$x$ / 1 , $f(x)$ / 1.5}{$0$, $6{,}85$, $+\infty$}
+   \tkzTabVar{-/ 0, +/ $f(6{,}85)$, -/ $-\infty$}
+\end{tikzpicture}
+\end{center}
+ 
+\begin{enumerate}
+ \item Justifier la limite de $f$ en $+\infty$.
+ \item Justifier les variations de la fonction $f$.
+\item Résoudre l'équation $f(x)=0$.
+\end{enumerate}
+\item\ 
+\begin{enumerate}
+\item Déterminer la limite de $g$ en $+\infty$.
+\item Démontrer que, pour tout réel $x$ appartenant à $[0\;;+\infty[$ on a $$g'(x)=(-0{,}03x+0{,}29)e^{0{,}2x}.$$
+\item Étudier les variations de la fonction $g$ et dresser son tableau de variations sur $[0\;;+\infty[$. Préciser une valeur approchée à $10^{-2}$ près du maximum de $g$.
+\item Montrer que l'équation $g(x)=0$ admet une unique solution non nulle et déterminer, à
+$10^{-2}$ près, une valeur approchée de cette solution.
+\end{enumerate}
+\end{enumerate}
+\begin{solution}
+ \begin{enumerate}
+ \item\ 
+\begin{enumerate}
+ \item $f(x)=-0{,}06x(x-13{,}7)$. Losque $x\rightarrow+\infty$, $-0{,}06x\rightarrow -\infty$ et $(x-13{,}7)\rightarrow+\infty$, donc $f(x)\xrightarrow[x\rightarrow+\infty]{}-\infty$.
+ \item $f'(x)=0{,}06(-2x+13{,}7)$, donc $f'(x)=0$ ssi $2x-13{,}7=0$ ssi $x=6{,}85$, et $f'(x)>0$ ssi $x>6{,}85$.
+\item $f(x)=0$ ssi $-0{,}06x=0$ ou $x-13{,}7=0$, donc l'équation admet deux solutions, $x=0$ et $x=13{,}7$.
+\end{enumerate}
+\item\ 
+\begin{enumerate}
+\item Lorsque $x\rightarrow+\infty$, $e^{0{,}2x}\rightarrow+\infty$ et $-0{,}15x+2{,}2\rightarrow-\infty$, donc $g(x)\xrightarrow[x\rightarrow+\infty]{}-\infty$.
+\item On pose $u(x)=-0{,}15x+2{,}2$ et $v(x)=e^{0{,}2x}$, alors $u'(x)=-0{,}15$ et $v'(x)=0{,}2e^{0{,}2x}$, donc $g'(x)=u'(x)v(x)+u(x)v'(x)=-0{,}15e^{0{,}2x}+(-0{,}15x+2{,}2)0{,}2e^{0{,}2x}=(-0{,}03x+0{,}29)e^{0{,}2x}$.
+\item $e^{0{,}2x}>0$ $\forall x\in\mathbb R$ et $-0{,}03x+0{,}29>0$ ssi $x<\tfrac{29}3=9+\tfrac13$, on a donc le tableau de variations suivant:
+\begin{center}\begin{tikzpicture}
+ \tkzTabInit{$x$ / 1 , $g'(x)$/1, $g(x)$ / 1.5}{$0$, $\tfrac{29}3$, $+\infty$}
+   \tkzTabLine{,+,z,-,}
+   \tkzTabVar{-/$0$ , +/ $g(\tfrac{29}3)\simeq2{,}98$, -/$-\infty$ }
+\end{tikzpicture}\end{center}
+Sur le tableau de variations on voit que $g(x)$ admet un maximum en $x=\tfrac{29}3$, à la calculatrice on trouve $g(\tfrac{29}3)\simeq2{,}98$.
+\item La fonction $g$ est continue et strictement décroissante sur l'intervalle $[\tfrac{29}3,+\infty[$. Comme $g(\tfrac{29}3)>0$ et $g(x)\xrightarrow[x\rightarrow+\infty]{}-\infty$, par le théorème des valeurs intermédiaires il existe un unique $x\in[\tfrac{29}3,+\infty[$ tel que $g(x)=0$. On sait qu'il n'en existe pas sur l'intervalle $]0,\tfrac{29}3[$ car $g$ est srictement croissante sur cet intervalle et que $g(0)=0$.
+
+Par lecture graphique sur la calculatrice on trouve $x\simeq13{,}74$.
+\end{enumerate}
+\end{enumerate}
+\end{solution}
+\ \vfill
+\exop{3}
+Soient $a$ et $b$ deux réels. Si $e^a=4$ et $e^b=5$, combien valent $e^{a+b}$, $e^{2a}$ et $e^{-b}$ ?
+\begin{solution}
+ $e^{a+b}=e^ae^b=20$, $e^{2a}=(e^a)^2=16$, $e^{-b}=\tfrac1{e^b}=\tfrac15$.
+\end{solution}
+\end{questions}
+\end{document}
