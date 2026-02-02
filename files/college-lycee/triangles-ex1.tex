@@ -1,0 +1,101 @@
+\documentclass[a4paper,12pt]{exam}
+%Documentation de la classe exam : https://mirrors.ircam.fr/pub/CTAN/macros/latex/contrib/exam/examdoc.pdf
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel} 
+\usepackage{amsmath,amssymb}
+\usepackage{titlesec}
+\usepackage{lastpage}
+
+\DeclareMathOperator{\cm}{cm}
+
+%En-tête et pied de page
+\pagestyle{headandfoot}
+\header{Nom :\\Classe :}{\Large\textbf{Angles \& Triangles}}{\today\\page \thepage/\pageref{LastPage}}
+\headrule
+\footrule
+\footer{}{Page \thepage}{}
+
+\titleformat{\section}[frame]{\Huge\bfseries\filright}{}{2mm}{\centering  }
+
+\printanswers					%Commenter cette ligne pour cacher les solutions.
+
+\qformat{\textbf{Exercice \thequestion~:}\hfill}
+\newcommand{\changesolution}[1]{\renewcommand{\solutiontitle}{\noindent\textbf{#1~:}}
+}
+\changesolution{Figures}
+
+\extrawidth{1cm}
+
+\begin{document}
+\section{Feuille d'exercices 1}
+
+\begin{questions}
+% Coller ici le code des questions issues de DAM.
+\question\ 
+\begin{enumerate}
+\item\begin{enumerate}
+\item Construire un triangle $ABC$ tel que $AB=5\cm$, $BC=3
+\cm$, et $AC=3\cm$.
+\item Construire un triangle $DEF$ tel que $DE=5\cm$, $EF=3\cm$ et $DF=4\cm$.
+\item Construire un triangle $GHI$ tel que $GH=4\cm$, $HI=4\cm$
+et $GI=4\cm$.
+\end{enumerate}
+
+\begin{solution}
+\ \\\ \\\ \\\ \\\ \\\ \\\ \\\
+\end{solution}
+\item Peut-on construire un triangle dont les côtés mesurent $1\cm, 2\cm$ et $4\cm$ ? Pourquoi ?
+\changesolution{Réponse}
+\begin{solution}
+\ \\\ \\
+\end{solution}
+\end{enumerate}
+
+\question\ 
+\begin{enumerate}
+\item\begin{enumerate}
+\item Construire un triangle $JKL$ tel que $JK=5\cm$, $KL=3
+\cm$, et $\widehat{JKL}=30^\circ$.
+\item Construire un triangle $MNO$ tel que $\widehat{MNO}=25^\circ$, $\widehat{MON}=40^\circ$, et $ON=4\cm$.
+\item Construire un triangle $PQR$ tel que $\widehat{PQR}=110^\circ$, $QR=2\cm$, et $PR=4\cm$.
+\end{enumerate}
+\changesolution{Figures}
+\begin{solution}
+\ \\\ \\\ \\\ \\\ \\\ \\\ \\\
+\end{solution}
+\item Peut-on construire un triangle avec deux angles droits ? Pourquoi ? 
+\changesolution{Réponse}
+\begin{solution}
+\ \\\ \\
+\end{solution}
+\end{enumerate}
+\question
+Parmi les triangles des exercices 1 et 2, lesquels sont isocèles ? Lesquels sont droits ? Lesquels sont aigus ?
+\changesolution{Réponse}
+\begin{solution}
+\ \\\ \\\ \\\ \\\ \\\ \\\ \\\
+\end{solution}
+
+\question\ 
+\begin{enumerate}
+ \item Tracer un segment $AB$ de longueur $5\cm$, puis, à l'aide du compas, tracer deux cercles de rayon $3\cm$ et de centres $A$ et $B$. Tracer la droite qui relie les deux points d'intersection de ces deux cercles. Cette droite s'appelle la \textbf{médiatrice} du segment $AB$. Que remarque-t-on ?
+ \item Placer un troisième point $C$ puis tracer la médiatrice des segments $AC$, et $BC$. Que remarque-t-on ?
+\item On appelle $O$ le point d'intersection des médiatrices. Tracer un cercle de centre $O$ passant par $A$. Ce cercle s'appelle le cercle \textbf{circonscrit} du triangle $ABC$. Que remarque-t-on ?
+\end{enumerate}
+\changesolution{Figures}
+\begin{solution}
+\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\
+\end{solution}
+\changesolution{Réponses}
+\begin{solution}
+\begin{enumerate}
+\item\ 
+\item\ 
+\item\ 
+\end{enumerate}
+\end{solution}
+
+
+\end{questions}
+\end{document}

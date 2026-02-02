@@ -1,0 +1,234 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[greek,french]{babel}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usepackage{tkz-euclide}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage[margin=2cm]{geometry}
+\usepackage{lastpage}
+\usetikzlibrary{shapes.misc}
+\usepackage{url}
+\usepackage{titlesec}
+
+\tikzset{cross/.style={cross out, draw, 
+         minimum size=2*(#1-\pgflinewidth), 
+         inner sep=0pt, outer sep=0pt},
+         cross/.default={2pt}}
+
+\newmdenv[linecolor=black,innertopmargin=1em,innerbottommargin=1em,backgroundcolor=lightgray!50!white]{infobox}
+\newmdenv[linecolor=black,innertopmargin=2em,innerbottommargin=2em,backgroundcolor=white]{whitebox}
+
+
+\theoremstyle{definition}
+\newtheorem*{dfns}{Définitions}
+\newtheorem*{dfn}{Définition}
+\newtheorem*{prop}{Propriétés}
+
+\titleformat{\section}{\large\bfseries\filright}{}{2mm}{\centering  }
+
+\begin{document}
+\pagestyle{empty}
+\section*{TomTom}
+\begin{infobox}
+ Le TomTom est une variation du Sudoku. Comme au Sudoku, il faut que chaque chiffre (ici de 1 à 5) soit présent dans chaque ligne et chaque colonne, sans répétition.
+ 
+ Dans certaines régions, il y a un nombre ; ce nombre doit être obtenu par addition, soustraction, multiplication ou division des chiffres écrits dans les cases de la région. Par exemple, en haut à droite du TomTom de gauche, il y a le nombre 8 ; il peut être obtenu par addition (5 plus 3) ou par multiplication (4 fois 2).
+ 
+ Ces deux TomTom on été créés par Grant Fikes, et se trouvent sur le site suivant (en anglais) :
+ 
+ \url{https://www.gmpuzzles.com/blog/tag/tomtom-2+classic+mondaytuesday/}
+\end{infobox}
+\begin{minipage}{0.49\textwidth}
+\begin{center}
+\includegraphics[scale=0.5]{tomtom1}
+\end{center}
+\end{minipage}
+\begin{minipage}{0.49\textwidth}
+\begin{center}
+\includegraphics[scale=0.5]{tomtom2}
+\end{center}
+\end{minipage}
+
+\section*{Les 13 crayons}
+\begin{infobox}
+On aligne 13 crayons sur la table. Chacun son tour, on en enlève 1, 2, ou 3 ; celui ou celle qui prend le dernier crayon a gagné.
+\end{infobox}
+Si on préfère, on peut chacun son tour tracer 1, 2 ou 3 traits sur une feuille, et celui ou celle qui trace le 13\textsuperscript{ème} trait a gagné. On peut aussi choisir un autre nombre que 13 ; ce jeu se joue beaucoup avec 21 crayons.
+
+\section*{Le jeu de Nim}
+\begin{infobox}
+On commence avec plusieurs piles d'objets. Chacun son tour, on retire autant d'objet que l'on veut dans une seule pile. Celui ou celle qui prend le dernier objet a gagné.
+\end{infobox} 
+
+\section*{Le jeu des pousses}
+
+\begin{infobox}
+ Le jeu des pousses, ``Sprouts'' en anglais, est un jeu inventé par les mathématiciens John Conway et Michael Paterson. Il se joue à deux.
+ 
+ On commence avec un certain nombres de points dessinés, ce sont les pousses. Chacun son tour, on trace un chemin, une branche, reliant deux points (ou faisant une boucle et revenant sur la même pousse), sans croiser des chemins déjà tracés, et on place un nouveau point sur ce chemin. Chaque pousse ne peut avoir que tois branches maximum.
+ 
+ Le but du jeu est de bloquer son adversaire : le premier ou la première qui ne peut plus rien tracer a perdu !
+\end{infobox}
+
+\section*{Le jeu de la frappe}
+\begin{infobox}
+ Le jeu de la frappe, ``Sylver coinage'' en anglais, est un jeu inventé par le mathématicien John Conway. Il se joue à deux.
+ 
+ Chacun son tour, on ``frappe'' un pièce de monnaie, d'une certaine valeur, toujours un nombre entier (positif et non-nul). Il faut toujours frapper une nouvelle pièce, qui nous permettra de payer des nouvelles valeurs.
+ 
+ Le but du jeu est de forcer son adversaire à frapper la pièce de valeur 1 : celui ou celle qui frappe 1 met fin au jeu, et perd.
+\end{infobox}
+Par exemple : Alice commence par frapper une pièce de valeur 5. Bob joue ensuite, il ne peut pas frapper 5, 10, 15... car avec des pièces de 5, on peut déjà payer toutes ces valeurs.
+
+Il décide de frapper 6. Désormais, nous avons des pièces de 5 et de 6. On peut payer quelque chose qui coûte 5, 6, 10, 11 (avec une pièce de 5 et une pièce de 6), 12, 15...
+
+Au tour d'Alice, elle frappe 4. Désormais Bob ne peut plus frapper 4, 5, 6, 8, 9, 10... Il décide de frapper 7.
+
+Alice décide ensuite de frapper 3, Bob frappe 2, Alice n'a plus le choix : elle frappe 1, et perd.
+
+\section*{La pipopipette}
+\begin{infobox}
+La pipopipette est un jeu inventé par le mathématicien Édouard Lucas. Il se joue à deux.
+
+Sur une partie délimitée d'une feuille à carreaux, chacun son tour, on trace un côté d'un carré ; si l'on trace le dernier côte d'un carré, on marque un point, et on trace immédiatement un nouveau trait. À la fin, on compte les points.
+\end{infobox}
+
+Par exemple, voici quelques tours de jeux :
+\begin{center}
+\begin{minipage}{0.15\textwidth}\hfill
+\begin{tikzpicture}
+ \foreach \x in {0,1,2,3}{
+  \foreach \y in {0,1,2,3}{ 
+   \node[draw,circle,inner sep=1pt,fill] at (0.5*\x,0.5*\y) {};
+   \draw[white!50!gray,very thick] (0,0)--(0,0.5)--(0.5,0.5)--(0.5,1)--(0.5,1.5);
+   \draw[white!50!gray,very thick] (1.5,1.5)--(1.5,1);
+   \draw[white!50!gray,very thick] (1,1.5)--(1,1);
+   \draw[black,very thick] (1,0)--(1,0.5)--(0.5,0.5);
+   \draw[black,very thick] (1.5,0)--(1.5,0.5)--(1.5,1);
+   \draw[black,very thick] (0,1.5)--(0,1);
+  }
+ }
+\end{tikzpicture}
+\end{minipage}\begin{minipage}{0.15\textwidth}\hfill
+\begin{tikzpicture}
+ \foreach \x in {0,1,2,3}{
+  \foreach \y in {0,1,2,3}{ 
+   \node[draw,circle,inner sep=1pt,fill] at (0.5*\x,0.5*\y) {};
+   \draw[white!50!gray,very thick] (0,0)--(0,0.5)--(0.5,0.5)--(0.5,1)--(0.5,1.5);
+   \draw[white!50!gray,very thick] (1.5,1.5)--(1.5,1);
+   \draw[white!50!gray,very thick] (1,1.5)--(1,1);
+   \draw[black,very thick] (1,0)--(1,0.5)--(0.5,0.5);
+   \draw[black,very thick] (1.5,0)--(1.5,0.5)--(1.5,1);
+   \draw[black,very thick] (0,1.5)--(0,1);
+   \draw[black,very thick] (1.5,0)--(1,0);
+  }
+ }
+\end{tikzpicture}
+\end{minipage}\begin{minipage}{0.15\textwidth}\hfill
+\begin{tikzpicture}
+ \foreach \x in {0,1,2,3}{
+  \foreach \y in {0,1,2,3}{ 
+   \node[draw,circle,inner sep=1pt,fill] at (0.5*\x,0.5*\y) {};
+   \draw[white!50!gray,very thick] (0,0)--(0,0.5)--(0.5,0.5)--(0.5,1)--(0.5,1.5);
+   \draw[white!50!gray,very thick] (1.5,1.5)--(1.5,1);
+   \draw[white!50!gray,very thick] (1,1.5)--(1,1);
+   \draw[black,very thick] (1,0)--(1,0.5)--(0.5,0.5);
+   \draw[black,very thick] (1.5,0)--(1.5,0.5)--(1.5,1);
+   \draw[black,very thick] (0,1.5)--(0,1);
+   \draw[black,very thick] (1.5,0)--(1,0);
+   \draw[white!50!gray,very thick] (1,0.5)--(1.5,0.5);
+   \node[draw,circle,inner sep=2pt,fill,white!50!gray] at (1.25,0.25){};
+   \draw[white!50!gray,very thick] (0.5,0)--(0.5,0.5);
+  }
+ }
+\end{tikzpicture}
+\end{minipage}\begin{minipage}{0.15\textwidth}\hfill
+\begin{tikzpicture}
+ \foreach \x in {0,1,2,3}{
+  \foreach \y in {0,1,2,3}{ 
+   \node[draw,circle,inner sep=1pt,fill] at (0.5*\x,0.5*\y) {};
+   \draw[white!50!gray,very thick] (0,0)--(0,0.5)--(0.5,0.5)--(0.5,1)--(0.5,1.5);
+   \draw[white!50!gray,very thick] (1.5,1.5)--(1.5,1);
+   \draw[white!50!gray,very thick] (1,1.5)--(1,1);
+   \draw[black,very thick] (1,0)--(1,0.5)--(0.5,0.5);
+   \draw[black,very thick] (1.5,0)--(1.5,0.5)--(1.5,1);
+   \draw[black,very thick] (0,1.5)--(0,1);
+   \draw[black,very thick] (1.5,0)--(1,0);
+   \draw[white!50!gray,very thick] (1,0.5)--(1.5,0.5);
+   \node[draw,circle,inner sep=2pt,fill,white!50!gray] at (1.25,0.25){};
+   \draw[white!50!gray,very thick] (0.5,0)--(0.5,0.5);
+   \draw[black, very thick] (0,0)--(1,0);
+   \draw[black, very thick] (0,1)--(0.5,1);
+   \node[draw,circle,inner sep=2pt,fill,black] at (0.25,0.25){};
+   \node[draw,circle,inner sep=2pt,fill,black] at (0.75,0.25){};
+  }
+ }
+\end{tikzpicture}
+\end{minipage}\begin{minipage}{0.15\textwidth}\hfill
+\begin{tikzpicture}
+ \foreach \x in {0,1,2,3}{
+  \foreach \y in {0,1,2,3}{ 
+   \node[draw,circle,inner sep=1pt,fill] at (0.5*\x,0.5*\y) {};
+   \draw[white!50!gray,very thick] (0,0)--(0,0.5)--(0.5,0.5)--(0.5,1)--(0.5,1.5);
+   \draw[white!50!gray,very thick] (1.5,1.5)--(1.5,1);
+   \draw[white!50!gray,very thick] (1,1.5)--(1,1);
+   \draw[black,very thick] (1,0)--(1,0.5)--(0.5,0.5);
+   \draw[black,very thick] (1.5,0)--(1.5,0.5)--(1.5,1);
+   \draw[black,very thick] (0,1.5)--(0,1);
+   \draw[black,very thick] (1.5,0)--(1,0);
+   \draw[white!50!gray,very thick] (1,0.5)--(1.5,0.5);
+   \node[draw,circle,inner sep=2pt,fill,white!50!gray] at (1.25,0.25){};
+   \draw[white!50!gray,very thick] (0.5,0)--(0.5,0.5);
+   \draw[black, very thick] (0,0)--(1,0);
+   \draw[black, very thick] (0,1)--(0.5,1);
+   \node[draw,circle,inner sep=2pt,fill,black] at (0.25,0.25){};
+   \node[draw,circle,inner sep=2pt,fill,black] at (0.75,0.25){};
+   \draw[white!50!gray,very thick] (0,1)--(0,0.5);
+   \draw[white!50!gray,very thick] (0,1.5)--(0.5,1.5);
+   \node[draw,circle,inner sep=2pt,fill,white!50!gray] at (0.25,0.75){};
+   \node[draw,circle,inner sep=2pt,fill,white!50!gray] at (0.25,1.25){};
+   \draw[white!50!gray,very thick] (1,0.5)--(1,1);
+  }
+ }
+\end{tikzpicture}
+\end{minipage}\begin{minipage}{0.15\textwidth}\hfill
+\begin{tikzpicture}
+ \foreach \x in {0,1,2,3}{
+  \foreach \y in {0,1,2,3}{ 
+   \node[draw,circle,inner sep=1pt,fill] at (0.5*\x,0.5*\y) {};}}
+   \draw[white!50!gray,very thick] (0,0)--(0,0.5)--(0.5,0.5)--(0.5,1)--(0.5,1.5);
+   \draw[white!50!gray,very thick] (1.5,1.5)--(1.5,1);
+   \draw[white!50!gray,very thick] (1,1.5)--(1,1);
+   \draw[black,very thick] (1,0)--(1,0.5)--(0.5,0.5);
+   \draw[black,very thick] (1.5,0)--(1.5,0.5)--(1.5,1);
+   \draw[black,very thick] (0,1.5)--(0,1);
+   \draw[black,very thick] (1.5,0)--(1,0);
+   \draw[white!50!gray,very thick] (1,0.5)--(1.5,0.5);
+   \node[draw,circle,inner sep=2pt,fill,white!50!gray] at (1.25,0.25){};
+   \draw[white!50!gray,very thick] (0.5,0)--(0.5,0.5);
+   \draw[black, very thick] (0,0)--(1,0);
+   \draw[black, very thick] (0,1)--(0.5,1);
+   \node[draw,circle,inner sep=2pt,fill,black] at (0.25,0.25){};
+   \node[draw,circle,inner sep=2pt,fill,black] at (0.75,0.25){};
+   \draw[white!50!gray,very thick] (0,1)--(0,0.5);
+   \draw[white!50!gray,very thick] (0,1.5)--(0.5,1.5);
+   \node[draw,circle,inner sep=2pt,fill,white!50!gray] at (0.25,0.75){};
+   \node[draw,circle,inner sep=2pt,fill,white!50!gray] at (0.25,1.25){};
+   \draw[black, very thick] (1.5,1.5)--(0.5,1.5);
+   \draw[black, very thick] (1.5,1)--(0.5,1);
+   \node[draw,circle,inner sep=2pt,fill,black] at (1.25,1.25){};
+   \node[draw,circle,inner sep=2pt,fill,black] at (0.75,1.25){};
+   \node[draw,circle,inner sep=2pt,fill,black] at (1.25,0.75){};
+   \node[draw,circle,inner sep=2pt,fill,black] at (0.75,0.75){};
+   \draw[white!50!gray,very thick] (1,0.5)--(1,1);
+\end{tikzpicture}
+\end{minipage}
+\end{center}
+
+\end{document}

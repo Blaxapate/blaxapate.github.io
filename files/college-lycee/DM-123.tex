@@ -1,0 +1,146 @@
+\documentclass[a4paper,12pt]{exam}
+%Documentation de la classe exam : https://mirrors.ircam.fr/pub/CTAN/macros/latex/contrib/exam/examdoc.pdf
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel} 
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{titlesec}
+\usepackage{tikz}
+\usepackage{lastpage}
+\usepackage{pgfplots}
+\usepackage{enumerate}
+\usepackage[inline]{enumitem}
+
+\DeclareMathOperator{\cm}{cm}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\PGCD}{PGCD}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théorème}
+
+%En-tête et pied de page
+\pagestyle{headandfoot}
+\header{}{\Large\textbf{Devoir Maison}\\Trois problèmes}{T\textsuperscript{ale} maths expertes}
+\headrule
+\footer{}{Page \thepage/3}{}
+
+\titleformat{\section}[frame]{\Huge\bfseries\filright}{}{2mm}{\centering  }
+
+\printanswers					%Commenter cette ligne pour cacher les solutions.
+
+\qformat{\textbf{Problème \thequestion~:}\hfill}
+\newcommand{\changesolution}[1]{\renewcommand{\solutiontitle}{\noindent\textbf{#1~:}}
+}
+\changesolution{Corrigé}
+
+\extrawidth{1cm}
+
+\begin{document}
+Ce DM est \emph{facultatif} et sa note ne comptera pas dans la moyenne. Il s'agit d'une version plus détaillée du travail de groupe d'avant les vacances.
+\begin{questions}
+
+\question\ 
+Il va s'agir de démontrer la formule du rang. Soient $E$ et $F$ des $\mathbb K$-espaces vectoriels, et soit $f\colon E\rightarrow F$ une application linéaire. On suppose que $\dim(E)=n\in\mathbb N$. On pose $\dim(\ker(f))=k$ et $\dim(\im(f))=m$; dans un premier temps il nous faudra démontrer que $k$ et $m$ sont finis.
+\begin{enumerate}
+\item Relisez les définitions d'espace vectoriel, de sous-espace vectoriel, d'application linéaire, de famille libre, de famille génératrice, de base, de dimension, du noyau $\ker(f)$ et de l'image $\im(f)$.
+\item Soit $(u_1,\!\cdots\!,u_k)$ une base de $\ker(f)$. Justifiez qu'il s'agit d'une famille libre de vecteurs de $E$ et donc que $k\leqslant n$. 
+
+\emph{Remarque : cet argument montre que la dimension d'un espace vectoriel est toujours supérieure ou égale à la dimension d'un sous-espace vectoriel.}
+\item Soit $(w_1,\!\cdots\!,w_m)$ une base de $\im(f)$. Puisque chaque $w_i\in\im(f)$, il existe pour chaque $i$ un $v_i\in E$ tel que $f(v_i)=w_i$. Montrez que la famille $(v_1,\!\cdots\!,v_m)$ est libre dans $E$ et donc que $m\leqslant n$.
+\item Soient $(\lambda_1,\!\cdots\!,\lambda_m,\mu_1,\!\cdots\!,\mu_m)$ des scalaires (càd des éléments de $\mathbb K$) tels que $\lambda_1 v_1+\cdots+\lambda_m v_m+\mu_1 u_1+\cdots+\mu_k u_k=0_E$.
+\begin{enumerate}
+\item Montrez que $f(\lambda_1 v_1+\cdots+\lambda_m v_m+\mu_1 u_1+\cdots+\mu_k u_k)=\lambda_1 w_1+\cdots+\lambda_m w_m=0_F$ et en déduire que pour chaque $i$, $\lambda_i=0$.
+\item En déduire alors que pour chaque $i$, $\mu_i=0$ et en conclure que la famille $(v_1,\!\cdots\!,v_m,$ $u_1,\!\cdots\!,u_k)$ est libre dans $E$.
+\end{enumerate}
+\item Soit $x\in E$ quelconque, on pose $y=f(x)$.
+\begin{enumerate}
+\item Puisque $y\in\im(f)$, justifiez qu'il existe $(\lambda_1,\!\cdots\!,\lambda_m)$ dans $\mathbb K$ tels que $y=\lambda_1 w_1+\cdots+\lambda_m w_m$.
+\item On pose $z=x-\lambda_1 v_1+\cdots+\lambda_m v_m$. Montrez que $z\in\ker(f)$, et en déduire qu'il existe $(\mu_1,\!\cdots\!,\mu_k)$ dans $\mathbb K$ tels que $z=\mu_1 u_1+\cdots+\mu_k u_k$.
+\item En conclure que $x=\lambda_1 v_1+\cdots+\lambda_m v_m+\mu_1 u_1+\cdots+\mu_k u_k$, et donc que la famille $(v_1,\!\cdots\!,v_m,u_1,\!\cdots\!,u_k)$ est génératrice de $E$. 
+\end{enumerate}
+Puisque $(v_1,\!\cdots\!,v_m,u_1,\!\cdots\!,u_k)$ est libre et génératrice de $E$, il s'agit d'une base, donc $\dim(E)=m+k=\dim(\im(f))+\dim(\ker(f))$.
+\end{enumerate}
+\question\ 
+Il va s'agir de montrer qu'une composée de rotations et de translations dans le plan est toujours égale à une seule rotation ou une seule translation. Autrement dit, si je bouge un objet dans le plan de manière arbitraire, je peux toujours le rammener à son point de départ à l'aide d'une seule rotation ou d'une seule translation.
+
+\begin{enumerate}
+ \item Pour $z_0\in\mathbb C$, on définit la fonction $T_{z_0}\colon\mathbb C\rightarrow\mathbb C$ par $T_{z_0}(z)=z+z_0$. Quelle est l'interprétation géométrique de la fonction $T_{z_0}$ ?
+ \item Pour $\theta\in[0,2\pi[$, on définit la fonction $R_0^{\theta}\colon\mathbb C\rightarrow\mathbb C$ par $R_0^{\theta}(z)=ze^{i\theta}$. Quelle est l'interpretation géométrique de la fonction $R_0^{\theta}$ ?
+ \item Pour $z_0\in\mathbb C$ et $\theta\in[0,2\pi[$, on définit la fonction $R_{z_0}^{\theta}\colon\mathbb C\rightarrow\mathbb C$ par $R_{z_0}^{\theta}=T_{z_0}\circ R_0^{\theta}\circ T_{-z_0}$. Montrez que $R_{z_0}^{\theta}(z)=(z-z_0)e^{i\theta}+z_0$ et donnez l'interprétation géométrique de $R_{z_0}^{\theta}$.
+ \item Soient $z_0,z_1\in\mathbb C$. Montrez que $T_{z_0}\circ T_{z_1}=T_{z_0+z_1}$.
+ \item Soient $z_0,z_1\in\mathbb C$ et $\theta\in[0,2\pi[$, on pose $f=T_{z_0}\circ R_{z_1}^{\theta}$. \begin{enumerate}
+ \item Si $\theta=0$, montrez que $f=T_{z_0}$.
+ \item Si $\theta\neq 0$, on pose $z_2=\tfrac{z_1(e^{i\theta}-1)-z_0}{e^{i\theta}-1}$. Montrez que $f=R_{z_2}^\theta$.
+ 
+ \emph{$z_2$ est le centre de rotation de $f$, pour le trouver, on a résolu l'équation $f(z)=z$ ; car le seul point fixe d'une rotation est son centre de rotation.}
+ \end{enumerate}
+ \item Soient $z_0,z_1\in\mathbb C$ et $\theta\in[0,2\pi[$, on pose $g=R_{z_1}^{\theta}\circ T_{z_0}$.
+ \begin{enumerate}
+  \item On rappelle que $R_{z_1}^\theta=T_{z_1}\circ R_0^{\theta}\circ T_{-z_1}$. Montrez, en utilisant l'associativité de l'opération ``$\circ$'' et en utilisant la question 4, que $g=T_{z_0}\circ R_{z_1-z_0}^\theta$.
+  \item Conclure en utilisant la question 5 que si $\theta=0$, $g=T_{z_0}$ ; et si $\theta\neq 0$, $g=R_{z'_2}^\theta$ pour un certain $z'_2\in\mathbb C$.
+ \end{enumerate}
+ \item Soient $z_0,z_1\in\mathbb C$ et $\theta_0,\theta_1\in[0,2\pi[$, on pose $h=R_{z_1}^{\theta_1}\circ R_{z_0}^{\theta_0}$.
+ \begin{enumerate}
+  \item Si $\theta_0+\theta_1=0$ ou $2\pi$, montrez que $h$ est une translation.
+  \item Si $\theta_0+\theta_1\neq0$ ou $2\pi$, montrez que $z_2=\tfrac{z_0e^{i\theta_1}(e^{i\theta_0}-1)+z_1(e^{i\theta_1}-1)}{e^{i(\theta_0+\theta_1)}-1}$ est solution de $h(z)=z$, puis montrez que $h=R_{z_2}^{\theta_0+\theta_1}$.
+ \end{enumerate}
+\end{enumerate}
+
+\question\ 
+Il va s'agir de montrer qu'une partie du ``jeu de la frappe'', ``Sylver coinage game'' en anglais, dure forcément un nombre fini de coups.
+
+Le jeu de la frappe se joue à deux. La personne dont c'est le tour nomme un nombre $n\in\mathbb N^*$. On n'a pas le droit de nommer un nombre qui s'exprime comme une combinaison linéaire, à coefficients dans $\mathbb N$, des nombres précédemment nommés. La première personne qui nomme ``1'' termine la partie et perd.
+
+Il faut imaginer qu'on ``frappe'' une pièce de monnaie de la valeur que l'on nomme : si je commence par nommer ``50'', des pièces de 50 sont désormais en circulation, et je peux payer quelque chose qui coûte 50, 100, 150... mais, par exemple, je ne peux pas payer quelque chose qui coûte 70. À chaque tour, il faut créer une nouvelle pièce, qui a une valeur que l'on ne pouvait pas payer avec les pièces précédentes. Un exemple de partie :
+\begin{itemize}
+ \item J1 commence et frappe 5. J2 ne pourra pas frapper 5,10,15...
+ \item J2 frappe 7. J1 ne pourra pas frapper 5,7,10,12,14,15...
+ \item J1 frappe 11. J2 ne pourra pas frapper 5,7,10,11,12,14,15...
+ \item J2 frappe 13.
+ \item J1 frappe 8.
+ \item J2 frappe 9.
+ \item J1 frappe 4.
+ \item J2 frappe 6.
+ \item J1 frappe 2.
+ \item J2 frappe 3.
+ \item J1 n'a plus le choix, frappe 1, et perd.\end{itemize}
+ 
+ Nous allons avoir besoin du théorème de Bézout, dans une version la plus générale possible.
+ 
+ \begin{thm}[Bézout général]
+  Soient $a_1,\!\cdots\!,a_n$ des nombres naturels. Soit $d$ le PGCD de $a_1,\!\cdots\!,a_n$ ; le plus grand nombre naturel qui divise chacun de ces nombres. Alors il exsite des nombres \emph{relatifs} $u_1,\!\cdots\!,u_n$ tels que $u_1a_1+\cdots+u_na_n=d$.
+ \end{thm}
+ 
+ Si vous n'avez pas vu cette version en cours, vous avez dû voir la version usuelle:
+ 
+ \begin{thm}[Bézout usuel]
+  Soient $a,b$ deux entiers naturels premiers entre eux, alors il existe $u,v$ dans $\mathbb Z$ tels que $ua+vb=1$.
+ \end{thm}
+
+ Voici une démonstration de la version générale à partir de la version usuelle, qui contient peu de détails, et que vous pouvez compléter par vous-même.
+ \begin{enumerate}[label=(\roman*)]
+  \item Soit $a_1,a_2$ deux nombres naturels, soit $d$ leur PGCD. On pose $a_1'=\tfrac{a_1} d$ et $a_2'=\tfrac{a_2}d$. Alors par Bézout usuel il existe $u_1,u_2$ dans $\mathbb Z$ tels que $u_1 a_1'+u_2a_2'=1$, en multiplicant par $d$ on obtient $u_1a_1+u_2a_2=d$. Ainsi la version générale de Bézout fonctionne pour $n=2$.
+  \item Soient $a_1,\!\cdots\!,a_n$ des entiers naturels avec $n>2$. Alors: $$\PGCD(a_1,\!\cdots\!,a_n)=\PGCD(\PGCD(a_1,\!\cdots\!,a_{n-1}),a_n).$$
+  \item Soient $a_1,\!\cdots\!,a_n$ des entiers naturels, $d=\PGCD(a_1,\!\cdots\!,a_n)$ et $d'=\PGCD(a_1,\!\cdots\!,a_{n-1})$. Par récurrence, il existe $u_1,\!\cdots\!,u_{n-1}$ tels que $u_1a_1+\cdots+u_{n-1}a_{n-1}=d'$. Par le cas $n=2$, il existe $u,v$ tels que $ud'+va_n=d$. Donc $uu_1a_1+\cdots+uu_{n-1}a_{n-1}+va_n=d$.
+ \end{enumerate}
+
+ Nous étudions maintenant une partie du jeu de la frappe. $n$ tours ont déjà été joués. Soient $a_1,\!\cdots\!,a_n$ les pièces frappées aux tours précédents, et soit $d$ leur PGCD.
+ 
+ \begin{enumerate}
+  \item Par Bézout général, il existe $u_1,\!\cdots\!,u_n$ dans $\mathbb Z$ tels que $u_1a_1+\cdots+u_na_n=d$. On pose $m=\max(|u_1|,\!\cdots\!,|u_n|)$, $M=ma_1$ et $A=Ma_1+\cdots+Ma_n$. Montrez que $M+ku_i\geqslant 0$ pour $1\leqslant i\leqslant n$ et $0\leqslant k\leqslant a_1$. En déduire que $A,A+d,A+2d,\!\cdots,A+a_1d$ sont ``payables'' et donc ne peuvent plus être joués, puis en déduire qu'il n'existe qu'un nombre fini de multiples de $d$ qui peuvent encore être joués. Notez que $A$ est un multiple de $d$.
+  \item Si $d=1$, alors cet argument montre qu'il n'y a qu'un nombre fini de nombres naturels qui peuvent encore être joués. Si $d>1$, alors cet argument montre qu'au bout d'un nombre de tours finis, il faudra jouer un nombre qui n'est pas divisible par $d$. Soit $b$ un nombre qui n'est pas divisible par $d$. Montrez que $\PGCD(a_1,\!\cdots\!,a_n,b)<d$. Alors au bout d'un nombre fini de tours, le PGCD doit baisser ; au bout d'un certain temps, le PGCD est de 1 ; puis la partie se termine.
+ \end{enumerate}
+
+ Puisque le jeu se termine, il est possible de prouver qu'il existe des stratégies gagnantes. Voici un résumé de ce que l'on sait sur les stratégies gagnantes de ce jeu :
+  
+ \begin{enumerate}
+  \item Si J1 commence par 1, 2 ou 3, J2 a une stratégie gagnante.
+  \item Si J1 commence par un nombre premier $p\geqslant 5$, J1 a une stratégie gagnante.
+  \item Si J1 commence par un nombre divisible par $p\geqslant 5$, J2 a une stratégie gagnante.
+  \item Si J1 commence par 4, 6, 8, 9 ou 12, J2 a une stratégie gagnante.
+  \item Si J1 commence par un nombre de la forme $2^a3^b\geqslant 16$, alors on ne sait pas qui de J1 ou de J2 a une stratégie gagnante. Un prix de 1000\$ est offert à qui résoudra cette question.
+ \end{enumerate}
+
+
+\end{questions}
+\end{document}

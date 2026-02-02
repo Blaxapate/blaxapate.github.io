@@ -1,0 +1,69 @@
+\documentclass[a4paper,12pt]{exam}
+%Documentation de la classe exam : https://mirrors.ircam.fr/pub/CTAN/macros/latex/contrib/exam/examdoc.pdf
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel} 
+\usepackage{amsmath,amssymb}
+\usepackage{titlesec}
+\usepackage{tikz}
+\usepackage{lastpage}
+\usetikzlibrary{shapes.misc}
+
+\tikzset{cross/.style={cross out, draw, 
+         minimum size=2*(#1-\pgflinewidth), 
+         inner sep=0pt, outer sep=0pt},
+         cross/.default={2pt}}
+\DeclareMathOperator{\cm}{cm}
+
+
+%En-tête et pied de page
+\pagestyle{headandfoot}
+\header{Classe :\\Nom \& Prénom :}{\Large\textbf{Évaluation}}{Page \thepage/\pageref{LastPage}\\\today}
+\headrule
+\footrule
+\footer{}{}{}
+
+\titleformat{\section}[frame]{\Huge\bfseries\filright}{}{2mm}{\centering  }
+
+\printanswers					%Commenter cette ligne pour cacher les solutions.
+
+\qformat{\textbf{Exercice \thequestion~:}\hfill}
+\newcommand{\changesolution}[1]{\renewcommand{\solutiontitle}{\noindent\textbf{#1~:}}
+}
+\changesolution{Figures}
+
+\extrawidth{1cm}
+
+\begin{document}
+
+\section{Triangles égaux}
+Entourez la ou les bonnes réponses. Vous pouvez tracer les figures pour vous aider.
+
+\setlength{\tabcolsep}{15pt}
+\renewcommand{\arraystretch}{1.5}
+\begin{center}
+\begin{tabular}{|p{4cm}||p{3cm}|p{3cm}|p{3cm}|}\hline
+ On passe du quadrilatère $ABGK$ au quadrilatère $CDIM$ en faisant & une translation & une rotation & ni l'une ni l'autre\\\hline
+ On passe du triangle $KGR$ au triangle $HDO$ en faisant & une translation & une rotation & ni l'une ni l'autre \\\hline
+ Quels sont les triangles égaux ? & $UVQ$ \& $WRS$ & $ABL$ \& $GND$ & $KGR$ \& $CIN$ \\\hline
+ Deux triangles sont égaux si : & leurs côtés sont deux à deux de même longueur & leurs angles sont deux à deux de même mesure & ils ont un côté de même longueur et un angle de même mesure\\\hline 
+ Dans les triangles $UPL$ et $VRM$ : & $[UP]$ est homologue à $[MR]$ & $R$ est homologue à $P$ & $U$ est homologue à $V$\\\hline
+\end{tabular}
+
+\ 
+
+\ 
+\vfill
+\begin{tikzpicture}
+   \foreach \x in {0,1,2,3,4}{
+  \foreach \y in {0,1,2,3,4}{ 
+   \node[draw,circle,inner sep=1pt,fill] at (1.5*\x,1.5*\y) {};}}
+   \newcounter{mycount}
+\setcounter{mycount}{`A}
+\foreach \y in {4,3,2,1,0}
+  \foreach \x in {0,1,2,3,4}
+    \node at (1.5*\x-0.3,1.5*\y+0.2) {$\char\value{mycount}$\addtocounter{mycount}{1}};
+  \end{tikzpicture}
+\end{center}
+\vfill
+\end{document}
