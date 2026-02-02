@@ -1,0 +1,214 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel} 
+\usepackage{fancyhdr}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usepackage{tkz-euclide}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage[margin=2cm]{geometry}
+
+\newmdenv[linecolor=black,innertopmargin=2em,innerbottommargin=2em,backgroundcolor=lightgray!50!white]{infobox}
+
+\setlength\headheight{24pt} 
+
+\theoremstyle{definition}
+\newtheorem*{dfns}{Définitions}
+\newtheorem*{dfn}{Définition}
+\newtheorem*{prop}{Propriétés}
+
+\begin{document}
+\pagestyle{fancy}
+%... then configure it.
+\fancyhead{} % clear all header fields
+\fancyhead[L]{Angles \& Triangles}
+\fancyhead[C]{\textbf{Leçon à compléter}}
+\fancyhead[R]{\today}
+\fancyfoot{} % clear all footer fields
+\fancyfoot[C]{\thepage}
+\section*{Nommer et reconnaître un angle}
+Un angle se note avec trois points, par exemple, $\widehat{ABC}$. Le point du milieu correspond au \textbf{sommet} de l'angle, les deux autres points se trouvent sur les côtés de l'angle.
+
+\ 
+\begin{infobox}
+\begin{dfns}\ 
+ \begin{itemize}
+  \item Un angle \textbf{aigu} est un angle qui mesure \dotfill
+  \item Un angle \textbf{obtus} est un angle qui mesure \dotfill
+  \item Un angle \textbf{droit} est un angle qui mesure \dotfill
+  \item Un angle \textbf{plat} est un angle qui mesure \dotfill
+  \item Deux angles sont \textbf{complémentaires} si la somme de leur mesure est \dotfill
+  \item Deux angles sont \textbf{supplémentaires} si la somme de leur mesure est \dotfill
+ \end{itemize}
+\end{dfns}
+\end{infobox}
+
+Pour savoir si un angle est aigu, obtus, ou droit, on utilise une \textbf{équerre}. Pour connaître la mesure précise d'un angle, on utilise un \textbf{rapporteur}.
+
+\section*{Nommer et reconnaître un triangle}
+Un triangle se note avec trois points, par exemple, $ABC$. Les trois points peuvent être mis dans l'ordre que l'on veut.
+
+Le triangle $ABC$ a trois angles : \dotfill
+
+Le triangle $ABC$ a aussi trois côtés : \dotfill
+
+\ 
+\begin{infobox}
+\begin{dfns}\ 
+ \begin{itemize}
+  \item Un triangle \textbf{rectangle} est un triangle qui a \dotfill
+  \item Un triangle \textbf{isocèle} est un triangle qui a \dotfill
+  \item Un triangle \textbf{équilatéral} est un triangle qui a \dotfill
+  \item Un triangle \textbf{aigu} est un triangle qui a \dotfill
+  \item Un triangle \textbf{obtus} est un triangle qui a \dotfill
+ \end{itemize}
+\end{dfns}
+\end{infobox}
+Pour savoir si un triangle est rectangle, on utilise une \textbf{équerre}, et pour savoir si un triangle est isocèle ou équilatéral, on utilise un \textbf{compas}.
+
+\begin{minipage}{0.45\textwidth}
+ \begin{center}
+\begin{tikzpicture}
+ \draw (0,0) node(A){}
+  -- (4,0) node(C){}
+  -- (2,4) node(B){}
+  -- cycle;
+  
+  \draw (0,0) node ()[anchor=north]{$A$};
+  \draw (4,0) node ()[anchor=north]{$C$};
+  \draw (2,4) node ()[anchor=east]{$B$};
+\end{tikzpicture}\\
+Le triangle $ABC$ est isocèle en $B$. Les longueurs $AB$ et $CB$ sont égales. Les angles $\widehat{BAC}$ et $\widehat{BCA}$ sont égaux.
+\end{center}
+\end{minipage}\hfill\begin{minipage}{0.45\textwidth}
+\begin{center}
+\begin{tikzpicture}
+ \draw (0,0) node(A){}
+  -- (4,0) node(C){}
+  -- (2,3.464) node(B){}
+  -- cycle;
+  \draw (0,0) node ()[anchor=north]{$D$};
+  \draw (4,0) node ()[anchor=north]{$E$};
+  \draw (2,3.464) node ()[anchor=south]{$F$};
+\end{tikzpicture}\\
+Le triangle $DEF$ est équilatéral. Ses trois côtés et ses trois angles sont égaux. Il a trois axes de symmétrie.
+\end{center}
+\end{minipage}
+
+\section*{Construire un triangle}
+
+Pour construire un triangle, il y a trois méthodes :
+
+
+\begin{minipage}{0.55\textwidth}
+\begin{infobox}
+\subsection*{Avec la longueur des trois côtés}
+\begin{enumerate}
+ \item On trace un des trois côtés, celui que l'on veut.
+ \item On reporte au compas les deux autres longueurs depuis les extrémités du côté déjà tracé.
+ \item On trace les deux autres côtés en reliant les extrémités du côté déjà tracé au point d'intersection des arcs de cercle.
+\end{enumerate}\end{infobox}
+\end{minipage}\hfill\begin{minipage}{0.39\textwidth}
+\begin{center}
+               \begin{tikzpicture}
+                \draw (0,0)--(0,4)--(8,4)--(8,0)--(0,0);
+               \end{tikzpicture}
+Tracer le triangle $GHI$ tel que $GH=2$cm, $HI=3$cm et $GI=4$cm.\end{center}
+              \end{minipage}
+
+Attention, cela ne marche que si les trois côtés vérifient \textbf{l'inégalité triangulaire} : dans un triangle, la somme des longueurs de deux côtés est toujours plus grande que le troisième côté.
+\begin{minipage}{0.55\textwidth}\begin{infobox}
+\subsection*{Avec deux longueurs et un angle}
+\begin{enumerate}
+ \item On trace un des deux côtés dont on connaît la longueur.
+ \item On trace l'angle que l'on connaît.
+ \item On trace le sommet restant en mesurant la longueur et on le relie à l'autre extrémité.
+\end{enumerate}\end{infobox}
+\end{minipage}\hfill\begin{minipage}{0.39\textwidth}
+\begin{center}
+               \begin{tikzpicture}
+                \draw (0,0)--(0,4)--(8,4)--(8,0)--(0,0);
+               \end{tikzpicture}
+Tracer le triangle $JKL$ tel que $JK=2$cm, $KL=3$cm, et $\widehat{JKL}=25^\circ$.\end{center}
+              \end{minipage}
+              
+              \ 
+              
+
+\begin{minipage}{0.55\textwidth}\begin{infobox}
+\subsection*{Avec une longueur et deux angles}
+\begin{enumerate}
+ \item On trace le côté dont on connaît la longueur.
+ \item On trace les deux angles que l'on connaît.
+ \item Le troisième sommet est donné par le point d'intersection.
+\end{enumerate}\end{infobox}
+\end{minipage}\hfill\begin{minipage}{0.39\textwidth}
+\begin{center}
+               \begin{tikzpicture}
+                \draw (0,0)--(0,4)--(8,4)--(8,0)--(0,0);
+               \end{tikzpicture}
+Tracer le triangle $MNO$ tel que $MN=3$cm, $\widehat{MNO}=45^\circ$ et $\widehat{NMO}=30^\circ$.\end{center}
+              \end{minipage}
+
+\section*{Le cercle circonscrit}
+\begin{minipage}{0.55\textwidth}
+\begin{infobox}
+\begin{dfn}\ 
+La \textbf{médiatrice} d'un segment est la droite perpendiculaire au segment et qui passe par son milieu.
+\end{dfn}
+
+\ 
+
+Pour la tracer, on trace à chacune des extrémités du segment un arc de cercle de même rayon, et on trace la droite qui passe par les deux intersections.
+\end{infobox}
+\end{minipage}\hfill\begin{minipage}{0.39\textwidth}
+\begin{center}
+               \begin{tikzpicture}
+                \draw (0,0)--(0,4)--(8,4)--(8,0)--(0,0);
+                \draw (2,1) node(A)[anchor=north]{$P$} -- (6,1) node(B)[anchor=north]{$Q$};
+                \draw (2,0.9)--(2,1.1);
+                \draw (6,0.9)--(6,1.1);
+               \end{tikzpicture}
+               Tracer la médiatrice du segment $[PQ]$
+               \end{center}
+              \end{minipage}
+              
+              \ 
+              
+  \begin{minipage}{0.55\textwidth}            
+\begin{infobox}
+\begin{dfn}\ 
+ Le \textbf{cercle circonscrit} à un triangle est le cercle qui passe par ses trois sommets.
+ \end{dfn}
+ 
+ \ 
+
+Pour le tracer, on trace la médiatrice de chacun des côtés. Les trois droites se croisent en un point : c'est le centre du cercle circonscrit. On place son compas sur ce point et on trace le cercle qui passe par l'un des sommets.
+
+\end{infobox}\end{minipage}\hfill\begin{minipage}{0.39\textwidth}
+\begin{center}
+               \begin{tikzpicture}
+                \draw (0,0)--(0,4)--(8,4)--(8,0)--(0,0);
+                \draw (1.5,0.7) node(A)[anchor=north]{$S$} -- (7,1) node(B)[anchor=north]{$T$} -- (4.2,3.1) node(C)[anchor=south]{$U$} -- cycle;
+               \end{tikzpicture}
+               Tracer le cercle circonscrit du triangle $SUT$.
+               \end{center}
+              \end{minipage}
+
+              Le centre du cercle circonscrit se trouve :
+              \begin{itemize}
+ \item À l'intérieur du triangle si le triangle est aigu,
+ \item À l'extérieur du triangle si le triangle est obtus,
+ \item Au milieu de \textbf{l'hypothénuse} du triangle si le triangle est droit.
+\end{itemize}
+
+\ 
+
+L'hypothénuse est le nom que l'on donne au côté opposé à l'angle droit dans un triangle rectangle.
+              
+\end{document}
