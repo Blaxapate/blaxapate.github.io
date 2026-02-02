@@ -1,0 +1,88 @@
+\documentclass[a5paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[greek,french]{babel} 
+\usepackage{fancyhdr}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usepackage{tkz-euclide}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage[margin=1cm,top=1.3cm]{geometry}
+\usepackage{lastpage}
+\usetikzlibrary{shapes.misc}
+
+\tikzset{cross/.style={cross out, draw, 
+         minimum size=2*(#1-\pgflinewidth), 
+         inner sep=0pt, outer sep=0pt},
+         cross/.default={2pt}}
+
+\newmdenv[linecolor=black,innertopmargin=1em,innerbottommargin=1em,backgroundcolor=lightgray!50!white]{infobox}
+\newmdenv[linecolor=black,innertopmargin=1em,innerbottommargin=1em,backgroundcolor=white]{whitebox}
+
+\setlength\headheight{24pt} 
+
+\theoremstyle{definition}
+\newtheorem*{dfns}{Définitions}
+\newtheorem*{dfn}{Définition}
+\newtheorem*{prop}{Propriétés}
+
+
+\begin{document}
+\pagestyle{fancy}
+%... then configure it.
+\fancyhead{} % clear all header fields
+\fancyhead[L]{Leçon}
+\fancyhead[C]{Multiples et Diviseurs}
+\fancyhead[R]{\today}
+\fancyfoot{} % clear all footer fields
+
+\begin{infobox}
+ On dit qu'un nombre est \textbf{divisible} par un autre s'il n'y a pas de reste quand on fait la division euclidienne.
+ 
+ \textbf{Examples :}
+ \begin{itemize}\item 18 est divisible par 2 car $18 = 2\times 9+0$. \item 16 n'est pas divisible par 5 car $16=5\times3+1$.
+ \item 125 \dotfill\ par 7 car $125=7\times....+...$
+ \item 534 \dotfill\ par 3 car $534=3\times....+...$  
+ \end{itemize}
+\end{infobox}
+\begin{whitebox}
+ \textbf{Toutes ces phrases signifient la même chose :}\begin{itemize}
+ \item $A$ est divisible par $B$.
+ \item On peut diviser $A$ par $B$.
+ \item $B$ est un diviseur de $A$.
+ \item $A$ est un multiple de $B$.
+ \item $A$ est dans la table de multiplication de $B$.
+ \end{itemize}
+\end{whitebox}
+Attention à ne pas confondre : $12$ est un multiple de $4$, $4$ est un diviseur de $12$, mais $4$ n'est pas un multiple de $12$ !
+
+\ 
+
+\begin{infobox}
+ \textbf{Critères de divisibilité.} Un nombre est :
+ \begin{itemize}
+  \item divisible par 2 si son chiffre des unités est 0, 2, 4, 6, ou 8.
+  \item divisible par 4 si ses deux derniers chiffres sont soit
+  \begin{itemize}
+  \item un nombre pair puis 0, 4, ou 8 ;
+  \item ou bien un nombre impair puis 2 ou 6.
+  \end{itemize}
+  \item divisible par 5 si son chiffre des unités est 0 ou 5.
+  \item divisible par 10 si son chiffre des unités est 0.
+  \item divisible par 3 si la somme de ses chiffres est divisible par 3.
+  \item divisible par 9 si la somme de ses chiffres est divisible par 9.
+  \item divisible par 6 s'il est divisible par 2 et par 3.
+ \end{itemize}
+\end{infobox}
+
+Est-ce que 6651416 est divisible par 2 ? par 3 ? par 4 ? par 5 ? par 6 ? par 9 ? par 10 ?
+
+Pour 7 et pour 8 il existe des critères mais ils sont un peu compliqués.
+
+\textbf{Exercices :} Lister tous les diviseurs de 60.
+
+\end{document}

@@ -1,0 +1,148 @@
+\documentclass[a4paper,12pt]{exam}
+%Documentation de la classe exam : https://mirrors.ircam.fr/pub/CTAN/macros/latex/contrib/exam/examdoc.pdf
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel} 
+\usepackage{amsmath,amssymb}
+\usepackage{titlesec}
+\usepackage{tikz}
+\usepackage{lastpage}
+\usepackage{pgfplots}
+
+\DeclareMathOperator{\cm}{cm}
+
+%En-tête et pied de page
+\pagestyle{headandfoot}
+\header{Classe :\\Nom \& Prénom :}{\Large\textbf{Statistiques}}{\today\\Page \thepage/\pageref{LastPage}}
+\headrule
+\footer{}{}{}
+
+\titleformat{\section}[frame]{\Huge\bfseries\filright}{}{2mm}{\centering  }
+
+\printanswers					%Commenter cette ligne pour cacher les solutions.
+
+\qformat{\textbf{Exercice \thequestion~:}\hfill}
+\newcommand{\changesolution}[1]{\renewcommand{\solutiontitle}{\noindent\textbf{#1~:}}
+}
+\changesolution{Réponse}
+
+\extrawidth{1cm}
+
+\pgfplotstableread[row sep=\\,col sep=&]{
+    type & effectif \\
+    A & 80  \\
+    B & 55  \\
+    C & 45\\
+    D & 40 \\
+    }\mydata
+
+
+\begin{document}
+\section{Évaluation}
+
+\begin{questions}
+
+\question
+On a demandé à quinze passant et passantes dans une rue de Paris combien de trajets ils et elles font en transport chaque jour. Voilà leurs réponses :
+$$4, 2, 5, 3, 2, 2, 5, 6, 2, 2, 2, 0, 2, 0, 6$$
+
+\begin{enumerate}
+ \item Quelle est la population de cette série statistique ? Quel est le caractère étudié ?
+ \begin{solution}
+  \ \\\ \\
+ \end{solution}
+
+ \item Remplissez le tableau d'effectif suivant :\ \\
+  $\begin{array}{|l|c|c|c|c|c|c|c|}\hline
+ \text{Nombre de trajets} &0&1&2&3&4&5&6\\\hline
+ \text{Effectif} & \phantom{000000}& \phantom{000000}& \phantom{000000}& \phantom{000000}& \phantom{000000}& \phantom{000000}& \phantom{000000}\\\hline
+\end{array}$
+\ \\
+\item Quelle est la moyenne de cette série ? Si besoin, arrondir au dixième.
+ \begin{solution}
+  \ \\\ \\
+ \end{solution}
+\item Quelle est la médiane de cette série ?
+ \begin{solution}
+  \ \\\ \\
+ \end{solution}
+
+\end{enumerate}
+
+\question
+
+ Une sociologue souhaite étudier les habitudes alimentaires des adolescent·es. Elle a demandé a une cantine scolaire quels repas ont été servis aux élèves aujourd'hui. Elle a relevé les données suivantes :  
+ 
+ \begin{minipage}{0.5\textwidth}
+\begin{tikzpicture}
+    \begin{axis}[
+            ybar,
+            ymin=0,
+            ytick={0,5,...,85},
+            bar width =20pt,
+            symbolic x coords={A,B,C,D},
+            xtick=data,
+        ]
+        \addplot table[x=type,y=effectif]{\mydata};
+    \end{axis}
+\end{tikzpicture}
+ \end{minipage}\begin{minipage}{0.49\textwidth}
+ A : Repas à base de poulet
+ 
+ \ 
+ 
+ B : Repas à base de bœuf
+ 
+ \ 
+ 
+ C : Repas à base de porc
+ 
+ \ 
+ 
+ D : Repas sans viande
+ \end{minipage}
+\begin{enumerate}
+ \item Combien d'élèves ont mangé du poulet à la cantine aujourd'hui ?
+\begin{solution}
+\ \\
+\end{solution}
+ \item Combien d'élèves ont mangé à la cantine aujourd'hui ?
+\begin{solution}
+\ \\
+\end{solution}
+ \item Calculez le pourcentage d'élèves ayant mangé du bœuf à la cantine aujourd'hui.
+\begin{solution}
+\ \\
+\end{solution}
+\item Calculez le pourcentage d'élèves ayant mangé de la viande à la cantine aujourd'hui.
+\begin{solution}
+\ \\
+\end{solution}
+\end{enumerate}
+\question
+Le 25 avril 2018, la chaîne d'info BFMTV a diffusé le graphique suivant :
+\begin{center}
+\includegraphics[scale=0.5]{camembert2}
+\end{center}
+\begin{enumerate}
+ \item Ce graphique vous semble-t-il correct ? Pourquoi ?
+ \begin{solution}
+\ \\\ \\
+\end{solution}
+ \item La chaîne a par la suite déclaré que le logiciel utilisé pour tracer des diagrammes circulaires avait mal fonctionné. Les pourcentages donnés sont corrects. Calculez les angles correspondant et tracez un diagramme circulaire corrigé.
+ \begin{solution}
+\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\
+ \begin{center}
+\begin{tikzpicture}
+         \draw (-1,0) circle (5);
+         \filldraw (-1,0) circle (1pt);
+\end{tikzpicture}
+\end{center}
+\ \\\ \\\ \\\ \\\ \\
+
+\end{solution}
+\end{enumerate}
+
+
+\end{questions}
+\end{document}

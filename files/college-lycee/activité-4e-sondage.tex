@@ -1,0 +1,96 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel} 
+\usepackage{fancyhdr}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usepackage{tkz-euclide}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{tabularx}
+
+\newcolumntype{S}{>{\centering\arraybackslash}m{1.5em}}
+\renewcommand{\tabularxcolumn}[1]{m{#1}} % redefine 'X' to use 'm'
+
+\newmdenv[linecolor=black,innertopmargin=2em,innerbottommargin=2em,backgroundcolor=lightgray!50!white]{infobox}
+
+\setlength\headheight{24pt} 
+
+\theoremstyle{definition}
+\newtheorem*{dfns}{Définitions}
+\newtheorem*{dfn}{Définition}
+\newtheorem*{prop}{Propriétés}
+
+\begin{document}
+\pagestyle{fancy}
+%... then configure it.
+\fancyhead{} % clear all header fields
+\fancyhead[L]{Statistiques}
+\fancyhead[C]{\textbf{Résultats du sondage}}
+\fancyhead[R]{\today}
+\fancyfoot{} % clear all footer fields
+
+
+\begin{center}
+{\large
+\begin{minipage}{0.5\textwidth}
+1.\ \ $\begin{array}{|l|c|c|c|c|c|c|}\hline
+ \text{Âge} & 9\phantom{0} & 10 & 11 & 12 & 13 & 14\\\hline
+ \text{Effectif} & & & & & &\\\hline
+\end{array}$
+
+L'âge médian de la classe est .........\\
+L'âge moyen de la classe est ..........
+\end{minipage}
+\ 
+
+\ 
+
+2.\ \ \begin{minipage}{0.5\textwidth}\begin{tikzpicture}
+         \draw[thick] (0,-1)--node(){{\small $\vert$}}(1,-1)--node(){{\small $\vert$}}(2,-1)--node(){{\small $\vert$}}(3,-1)--node(){{\small $\vert$}}(4,-1)--node(){{\small $\vert$}}(5,-1)--node(){{\small $\vert$}}(6,-1)--node(){{\small $\vert$}}(7,-1)--node(){{\small $\vert$}}(8,-1)--node(){{\small $\vert$}}(9,-1)--node(){{\small $\vert$}}(10,-1);
+         \draw[thick] (0,-1)--node(){{\small 1 -- \;}}(0,0)--node(){{\small 2 -- \;}}(0,1)--node(){{\small 3 -- \;}}(0,2)--node(){{\small 4 -- \;}}(0,3)--node(){{\small 5 -- \;}}(0,4);
+        \end{tikzpicture}\end{minipage}
+        
+        \vfill
+
+3.\ \ \begin{minipage}{0.4\textwidth}
+       \begin{tikzpicture}
+         \draw (-1,0) circle (2.5);
+         \filldraw (-1,0) circle (1pt);
+       \end{tikzpicture}
+
+      \end{minipage}4.\ \ \begin{minipage}{0.4\textwidth}
+       \begin{tikzpicture}
+         \draw (-1,0) circle (2.5);
+         \filldraw (-1,0) circle (1pt);
+       \end{tikzpicture}
+
+      \end{minipage}
+\vfill
+5.$\begin{array}{|l|c|c|c|c|c|}\hline
+ \text{Temps de trajet (minutes)} & <15\phantom{0} & \text{de }15\text{ à }30 & \text{de }30\text{ à }45 & \text{de }45\text{ à }60 & >60\\\hline
+ \text{Effectif} & & & & &\\\hline
+\end{array}$
+
+Le temps de trajet médian est ........
+}
+
+\end{center}
+{\Large
+\begin{center}\textbf{Sondage}\end{center}
+\begin{enumerate}
+ \item Quel âge as-tu ? \dotfill
+ \item Quelle est ta matière préférée ?\dotfill
+ \item Est-ce que tu as un animal domestique ?\hfil $\square$ Oui \hfil$\square$ Non
+ \item Quel est le dernier livre que tu as lu ? \dotfill
+ \item Combien de temps de trajet y a-t-il entre chez toi et le collège ?\\.\dotfill
+\end{enumerate}
+              }
+\end{document}

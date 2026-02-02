@@ -1,0 +1,106 @@
+\documentclass[a4paper,12pt]{exam}
+%Documentation de la classe exam : https://mirrors.ircam.fr/pub/CTAN/macros/latex/contrib/exam/examdoc.pdf
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel} 
+\usepackage{amsmath,amssymb}
+\usepackage{titlesec}
+\usepackage{tikz}
+\usepackage{lastpage}
+
+\DeclareMathOperator{\cm}{cm}
+
+
+%En-tête et pied de page
+\pagestyle{headandfoot}
+\header{Classe :\\Nom \& Prénom :}{\Large\textbf{Évaluation}}{Page \thepage/\pageref{LastPage}\\\today}
+\headrule
+\footrule
+\footer{}{}{}
+
+\titleformat{\section}[frame]{\Huge\bfseries\filright}{}{2mm}{\centering  }
+
+\printanswers					%Commenter cette ligne pour cacher les solutions.
+
+\qformat{\textbf{Exercice \thequestion~:}\hfill}
+\newcommand{\changesolution}[1]{\renewcommand{\solutiontitle}{\noindent\textbf{#1~:}}
+}
+\changesolution{Figures}
+
+\extrawidth{1cm}
+
+\begin{document}
+\section{Angles \& Triangles}
+
+\begin{questions}
+% Coller ici le code des questions issues de DAM.
+\question\ 
+\begin{enumerate}
+\item Construire un triangle $ABC$ tel que $AB=4\cm$, $BC=3 \cm$, et $AC=5\cm$.
+\item Construire un triangle $DEF$ tel que $DE=3\cm$, $EF=3\cm$ et $\widehat{DEF}=110^\circ$.
+\item Construire un triangle $GHI$ tel que $GH=4\cm$, $\widehat{GHI}=60^\circ$ et $\widehat{HGI}=60^\circ$.
+\end{enumerate}
+
+\begin{solution}
+\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\
+\end{solution}
+
+\question
+Décrire chaque triangle de l'exercice 1 : dire s'il est rectangle, aigu, isocèle... 
+
+\changesolution{Réponse}
+\begin{solution}
+\ \\\ \\\ \\\ \\\ \\\ \\\ \\\\ \\\ \\\ \\\ \\\ \\\ \\\ \\
+\end{solution}
+
+\question
+Tracer le cercle circonscrit du triangle ci-dessous : 
+\changesolution{Figure}\begin{solution}\ \\\ \\\ \\\\ \\\ \\\ \\\
+
+\begin{center}
+\begin{tikzpicture}
+                 \draw (0,0)  -- (-1,8)  -- (4,6)  -- cycle;
+                \end{tikzpicture}
+                \end{center}
+                \ \\\ \\\ \\\
+                \ \\\ \\\ \\\
+\end{solution}
+
+\question\
+Peut-on construire un triangle dont les côtés mesurent $2\cm$, $3\cm$ et $7\cm$ ? Pourquoi ?
+\changesolution{Réponse}
+\begin{solution}
+\ \\\ \\\ \\\ \\\ \\\ \\\ \\
+\end{solution}
+\end{questions}\begin{questions}
+
+\section{Multiples \& Diviseurs}
+\question\ 
+Entourez la ou les bonnes réponses.
+\setlength{\tabcolsep}{15pt}
+\renewcommand{\arraystretch}{1.5}
+\begin{center}
+\begin{tabular}{|l||c|c|c|}\hline
+ Le nombre 6 est un diviseur de & 2 & 12 & 15\\\hline
+ Le nombre 28 est un multiple de & 2 & 3 & 4\\\hline
+ Le nombre 5932 est divisible par & 2 & 3 & 4\\\hline
+ 2818 est égal à & $2 \times 1409$ & $2\times 1409+1$ & $4\times717$\\\hline 
+\end{tabular}
+\end{center}
+
+\ 
+
+\question
+Il y a 60 minutes dans une heure : ce nombre n'a pas été choisi au hasard, c'est un nombre très pratique pour mesurer le temps car il a beaucoup de diviseurs. On peut le diviser par 2 pour faire des demi-heures, par 4 pour faire des quarts d'heure...
+
+\
+
+Pouvez-vous lister tous les diviseurs de 60 ? N'oubliez pas que les diviseurs vont par paire !
+
+\changesolution{Réponse}
+\begin{solution}
+\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\\ \\ 
+\end{solution}
+
+\end{questions}
+\end{document}
