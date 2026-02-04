@@ -1,0 +1,121 @@
+\documentclass[a4paper,12pt]{exam}
+%Documentation de la classe exam : https://mirrors.ircam.fr/pub/CTAN/macros/latex/contrib/exam/examdoc.pdf
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel} 
+\usepackage{amsmath,amssymb}
+\usepackage{titlesec}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\usepackage{lastpage}
+\usepackage{pgfplots}
+\usepackage{enumerate}
+\usepackage[inline]{enumitem}
+
+\DeclareMathOperator{\cm}{cm}
+\DeclareMathOperator{\m}{m}
+\newcommand{\vect}{\overrightarrow}
+
+
+%En-tête et pied de page
+\pagestyle{headandfoot}
+\header{1\textsuperscript{ère} maths spé}{\Large\textbf{Évaluation} -- Géométrie vectorielle}{
+%page \thepage/2
+\today
+%LLG 2023-24
+}
+\headrule
+\footer{}{}{}
+
+\titleformat{\section}[frame]{\Huge\bfseries\filright}{}{2mm}{\centering  }
+
+%\printanswers					%Commenter cette ligne pour cacher les solutions.
+
+
+\newcommand{\changesolution}[1]{\renewcommand{\solutiontitle}{\noindent\textbf{#1~:}}
+}
+\changesolution{Corrigé}
+
+%command \exercice to be called later
+\newcommand{\exercice}[2]{\qformat{\textbf{Exercice \thequestion}#1\hfill\textbf{#2}}\question\ }
+%command \exo for a blank exercise
+\newcommand{\exo}{\exercice{}{\ }}
+%command \exop{x} for an exercise worth x points
+\newcommand{\exop}[1]{\exercice{}{#1pt}}
+%command \exon{x} for an exercise named x
+\newcommand{\exon}[1]{\exercice{\textbf{ :}\emph{ #1.}}{\ }}
+%commmand \exonp{x,y} for an exercise named x and worth y points
+\newcommand{\exonp}[2]{\exercice{\textbf{ :}\emph{ #1.}}{#2pt}}
+
+\extrawidth{1cm}
+
+\begin{document}
+\begin{questions}
+\exop{10}
+\begin{minipage}{0.5\textwidth}
+ 
+Sur la figure ci-contre, $(O,\vect{OU},\vect{OV})$ forment un repère orthonormé, $U$ est le milieu de $[OA]$, $V$ le milieu de $[OB]$, et $BOAT$ est un carré.
+\begin{enumerate}
+ \item\begin{enumerate}\item Justifier que $(BU)$ est la droite d'équation $2x+y=2$. \item Donner une équation cartésienne de la droite $(TV)$. \item Déterminer les coordonnées de $S$, leur point d'intersection.
+ \end{enumerate}
+\end{enumerate} 
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\begin{center}
+ \begin{tikzpicture}
+  \draw (0,0)--(4,0)--(4,4)--(0,4)--cycle;
+  \node at (0,0) [anchor=north east] {$O$};
+  \node at (4,0) [anchor=north west] {$A$};
+  \node at (0,4) [anchor=south east] {$B$};
+  \node at (4,4) [anchor=south west] {$T$};
+  \node at (0,2) [anchor=east] {$V$};
+  \node at (2,0) [anchor=north] {$U$};
+  \draw (2,-0.1)--(2,0.1);
+  \draw (-0.1,2)--(0.1,2);
+  
+ \end{tikzpicture}
+\end{center}
+\end{minipage}
+\begin{enumerate}\stepcounter{enumi}
+ \item Soit $(d)$ la droite perpendiculaire à $(TV)$ passant par $A$.
+ \begin{enumerate}
+ \item Donner un vecteur normal à $(d)$.
+ \item En déduire une équation cartésienne de $(d)$. \item Donner les coordonnées de $P$, le point d'intersection de $(d)$ et $(TV)$.
+ \end{enumerate}
+ \item Soit $(d')$ la droite parallèle à $(TV)$ passant par $O$.
+ \begin{enumerate}\item Donner un vecteur normal à $(d')$.
+ \item En déduire une équation cartésienne de $(d')$.
+ \item Vérifier que les points $H\colon(\tfrac45\;;\tfrac25)$ et $I\colon(\tfrac85\;;\tfrac45)$ sont sur la droite $(d')$.
+\end{enumerate}
+\item\begin{enumerate}
+\item Montrer par le calcul que $\vect{BU}\cdot\vect{TV}=0$ et $\vect{SI}\cdot\vect{HP}=0$.
+\item En déduire que $SHIP$ est un carré, puis montrer que l'aire de $BOAT$ est cinq fois l'aire de $SHIP$.
+\end{enumerate}
+\end{enumerate}
+
+\exonp{Inversion circulaire}5
+On se place dans un repère orthonormé $(O,\vec\imath,\vec\jmath)$.
+\begin{enumerate}
+ \item Donner une équation cartésienne du cercle $\mathcal C$ de centre $O$ et de rayon 1.
+ \item Soit $P\colon(a\;;b)$ un point tel que $a^2+b^2>1$. Est-il à l'intérieur ou à l'extérieur de $\mathcal C$ ?
+ \item Donner une équation vectorielle du cercle $\mathcal C'$ de diamètre $OP$.
+ \item Soient $M$ et $N$ les points d'intersections de $\mathcal C$ et $\mathcal C'$. Montrer que $\vect{OM}\cdot\vect{OP}=1$ et $\vect{ON}\cdot\vect{OP}=1$.
+ \item Soit $P'$ le milieu de $[MN]$. Exprimer $\vect{OP'}$ en fonction de $\vect{OM}$ et $\vect{ON}$, puis montrer que $\vect{OP}\cdot\vect{OP'}=1$.
+\end{enumerate}
+
+\exop5
+Dans un repère orthonormé $(O,\vec\imath,\vec\jmath)$, on considère le point $F\colon(0\;;1)$.
+
+Décrire l'ensemble des points $M\colon(x\;;y)$ qui satisfont l'équation $\vect{OM}\cdot\vect{OF}=||\vect{FM}||$.
+
+\exon{Bonus}
+Nous sommes 40 dans cette salle de classe.
+\begin{enumerate}
+ \item Quelle est la probabilité que l'un·e d'entre nous fête son anniversaire aujourd'hui ?
+ \item Quelle est la probabilité que deux d'entre nous fêtent leur anniversaire aujourd'hui ?
+ \item Sachant qu'au moins une personne dans cette classe fête son anniversaire aujourd'hui, quelle est la probabilité qu'au moins deux personnes fêtent leur anniversaire aujourd'hui ?
+ \item Combien de personnes faut-il au minimum dans une salle pour que la probabilité que deux personnes fêtent leur anniversaire le même jour soit >50\% ?
+\end{enumerate}
+
+\end{questions}
+\end{document}
